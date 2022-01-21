@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../../../source/objectStyle.scss";
+
+.like_movies {
+  width: 350px;
+  font-family: "Roboto", sans-serif;
+  & .title {
+    @include styleText(48, 56);
+    color: #929292;
+    font-weight: bold;
+  }
+  & .line {
+    background-color: #929292;
+    height: 1px;
+    margin: 24px 0px 30px;
+  }
+}
+
+.movies {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

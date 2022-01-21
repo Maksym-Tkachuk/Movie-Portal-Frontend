@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../../../../source/objectStyle.scss";
+
+
+.movie {
+    width: 137px;
+    margin-bottom: 36px;
+    & img {
+      width: 100%;
+      height: 200px;
+    }
+    & p:first-of-type {
+      @include styleText(24, 28);
+      margin: 17px 0 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+    }
+    & p:last-child {
+      @include styleText(14, 16);
+      color: #929292;
+      & span:first-child {
+        margin-right: 12px;
+      }
+    }
+  }
+

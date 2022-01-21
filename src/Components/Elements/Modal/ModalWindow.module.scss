@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import "../../../source/objectStyle.scss";
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 1000;
+  & ::-webkit-scrollbar {
+    width: 15px;
+  }
+  &.active {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+.modal__content {
+  padding: 40px;
+  border-radius: 58px;
+  background-color: #fff;
+  max-height: 77vh;
+  width: 70%;
+  margin-top: 97px;
+  overflow: auto;
+}
+
+.rgistratin_button {
+  display: flex;
+  max-width: 438px;
+  justify-content: center;
+  border: 1px solid #000000;
+  border-radius: 53px;
+  margin: 0 auto;
+}
+.content__inner {
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  & > span {
+    @include styleText(24, 65);
+    color: #707070;
+  }
+}
+.social_groups {
+  & a:not(:last-child) {
+    margin-right: 69px;
+  }
+}

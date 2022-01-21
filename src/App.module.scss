@@ -1,0 +1,22 @@
+@import "./source/nullstyle.scss";
+
+.Wrraper {
+  background-color: #000;
+  color: white;
+
+
+  & > .container {
+    position: relative;
+    max-width: 1408px;
+    margin: 0 auto;
+    padding: 0 41px;
+  }
+}
+
+.CircularProgress{
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

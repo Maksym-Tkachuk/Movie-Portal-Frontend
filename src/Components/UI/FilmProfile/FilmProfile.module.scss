@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../../source/objectStyle.scss";
+.navigate {
+  margin-bottom: 31px;
+  font-family: "Roboto", sans-serif;
+  @include styleText(36, 42);
+  & span {
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: red;
+      transition: 0.5s;
+    }
+  }
+}
+
+.flag {
+  width: 45px;
+  height: 30px;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+

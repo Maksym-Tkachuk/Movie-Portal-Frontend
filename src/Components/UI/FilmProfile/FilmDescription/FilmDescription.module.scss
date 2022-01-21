@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../../../source/objectStyle.scss";
+
+.flag {
+  width: 45px;
+  height: 30px;
+}
+
+p {
+  margin-bottom: 0;
+}
+$color: #201f1f;
+
+.description {
+  background: $color;
+  font-family: "Roboto", sans-serif;
+  max-width: 857px;
+  padding: 77px 29px 78px 39px;
+  display: flex;
+  margin-bottom: 30px;
+  & > img {
+    width: 262px;
+    height: 387px;
+    margin-right: 28px;
+  }
+  & .film_description {
+    & > div {
+      margin-bottom: 17px;
+    }
+    & .about_film {
+      @include styleText(17, 25);
+      color: #929292;
+      margin-bottom: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 12;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  & .film_characteristiv {
+    display: flex;
+    align-items: center;
+    margin-left: -5px;
+    & > span {
+      margin-right: 15px;
+    }
+    & > span:last-child {
+      @include styleText(18, 21);
+    }
+    & .rating span {
+      @include styleText(24, 28);
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  }
+  & .name_film {
+    @include styleText(48, 56);
+    font-weight: bold;
+  }
+}
+
+.additional_information {
+  max-width: 40.75rem;
+  padding: 19px 42px;
+  background: $color;
+  & .county_name {
+    @include styleText(36, 42);
+    font-weight: bold;
+    margin-bottom: 45px;
+    & span {
+      margin-right: 12px;
+    }
+  }
+  & .film_information {
+    display: flex;
+    justify-content: space-between;
+    @include styleText(30, 35);
+    & .decription_fileds {
+      margin-left: 30px;
+      max-width: 370px;
+      color: grey;
+      & p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

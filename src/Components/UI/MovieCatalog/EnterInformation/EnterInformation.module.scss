@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+@import "../../../../source/objectStyle.scss";
+
+.enterInformation {
+  padding: 9px 0 57px 0;
+}
+.blockInformation {
+  max-width: (548/16) + rem;
+}
+.blockInformation__top {
+  @include styleText(55, 131);
+  font-family: "Rock Salt", cursive;
+}
+.blockInformation__bottom {
+  @include styleText(20, 26);
+  font-family: "Red Hat Text", sans-serif;
+}

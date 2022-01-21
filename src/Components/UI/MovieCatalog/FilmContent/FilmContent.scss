@@ -1,0 +1,16 @@
+.slick-arrow {
+  border: 1px solid #fff !important;
+  height: 40px !important;
+  width: 40px !important;
+  z-index: 2 !important;
+}
+
+.slick-next:before {
+  content: "ᐳ" !important;
+}
+.slick-prev:before {
+  content: "ᐳ" !important;
+}
+.slick-prev {
+  transform: rotate(180deg) !important;
+}

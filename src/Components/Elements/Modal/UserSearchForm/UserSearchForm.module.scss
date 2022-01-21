@@ -1,0 +1,33 @@
+@import "../../../../source/objectStyle.scss";
+
+$width: 438px;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 67px;
+  & > button {
+    background-color: #fff;
+    margin-top: 20px;
+  }
+  & > div {
+    width: $width;
+    margin: 0;
+    margin-bottom: 20px;
+
+    & * {
+      font-family: "Times New Roman", Times, serif;
+      @include styleText(24, 30);
+    }
+  }
+  & .errorMessage {
+    margin-top: -10px;
+    color: red;
+    margin-bottom: 0;
+  }
+}
+
+.CircularProgress{
+  margin-top: 20px;
+}

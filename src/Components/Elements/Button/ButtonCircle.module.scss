@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+@import "../../../source/objectStyle.scss";
+
+.button {
+  border-radius: 53px;
+  width: 220px;
+  text-align: center;
+  color:  #B11226;
+  @include styleText(36, 43);
+  font-family: "Lato", sans-serif;
+  transition: 0.5s;
+  padding: 13px 0;
+   cursor: pointer;
+  &:hover,&.active {
+    transition: 0.5s;
+    color: #fff;
+    background: #b11226;
+  }
+}

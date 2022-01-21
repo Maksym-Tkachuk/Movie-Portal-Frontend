@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Ranchers&display=swap");
+@import "../../../source/objectStyle.scss";
+
+.header {
+  background: #b11226;
+  padding: 8px 0px;
+}
+.header__inner {
+  display: flex;
+  max-width: 1408px;
+  padding: 0 41px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  .header__siteLogo {
+    font-family: "Ranchers", cursive;
+    @include styleText(24, 30);
+    & > a {
+      color: white;
+    }
+  }
+}
+
+.header__registration > span:first-child {
+  margin-right: 25px;
+}
+
+.icon svg {
+  margin-right: 20px;
+}

@@ -1,0 +1,84 @@
+form {
+  display: flex;
+  flex-direction: column;
+  & div:not(:first-child) {
+    margin-bottom: 2px;
+  }
+
+  & .ant-input-group-wrapper {
+    margin-bottom: 10px;
+  }
+  & div {
+    color: red;
+  }
+}
+.controlPanel {
+  display: flex;
+  & .button {
+    width: 200px;
+    margin: 0 auto;
+    border: 2px solid #ffe607;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    font-weight: bold;
+    font-size: 19px;
+    &:hover {
+      border-color: #ff0707;
+    }
+  }
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  & > span > div > div {
+    height: 144px;
+    width: 144px;
+  }
+}
+
+.text_information {
+  display: flex;
+  flex-direction: column;
+  & > div {
+    color: red;
+  }
+}
+
+.control {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  & button {
+    color: #fff;
+    border-color: #fff;
+    transition: 0.5s;
+    font-size: 20px;
+    &:hover {
+      transition: 0.5s;
+      border-color: red;
+      color: red;
+    }
+  }
+}
+
+.picture {
+  width: 106px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  margin: 50px 25px;
+}
+.uploadFile {
+  margin-top: 24px;
+  &:hover .picture {
+    display: none;
+  }
+}
+
+.search {
+  margin-bottom: 20px;
+}
+
+
