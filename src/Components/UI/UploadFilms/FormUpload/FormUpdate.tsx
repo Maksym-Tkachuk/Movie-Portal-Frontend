@@ -1,18 +1,13 @@
 import style from "../UploadFilms.module.scss";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import {
-  findFilm,
-  removeFilm,
-  setResult,
-  updateFilm,
-} from "../../../../Redux/filmProfile-reducer";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { message } from "antd";
 import { Input } from "antd";
 import { API_URL_IMG } from "../../../../http/api";
 import { initialValuesType } from "../UploadFilms";
+import { findFilm, removeFilm, setResult, updateFilm } from "../../../../Redux/uploadFilm-reducer";
 const { Search } = Input;
 
 
@@ -27,7 +22,7 @@ type FormUpdateType={
 
 const FormUpdate: FC<FormUpdateType> = (props) => {
   const dispatch = useDispatch();
-  const { result, film } = useTypedSelector((state) => state.filmProfile);
+  const { result, film } = useTypedSelector((state) => state.uploadFilm);
   
 
 

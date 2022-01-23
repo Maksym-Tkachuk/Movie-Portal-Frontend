@@ -6,9 +6,11 @@ import play_button from "../../../../img/icon_for_film/playButton.svg";
 import style from "./MovieComponent.module.scss";
 import ControlPanel from "./ControlPanel";
 
-interface FilmProfileType {}
+interface FilmProfileType {
+  movie:any
+}
 
-const MovieComponent: FC<FilmProfileType> = (props) => {
+const MovieComponent: FC<FilmProfileType> = ({movie}) => {
   return (
     <div>
       <ReactPlayer
@@ -16,7 +18,7 @@ const MovieComponent: FC<FilmProfileType> = (props) => {
         playIcon={<img src={play} />}
         light
         controls
-        url="https://youtu.be/QPistcpGB8o"
+        url={movie}
       />
       <div className={style.control_block}>
         <ControlPanel img={tv_button} title="VidCloud" />

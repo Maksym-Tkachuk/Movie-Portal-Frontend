@@ -9,9 +9,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 interface FilmContentType {
-  films: Array<FilmResponce>;
-  title: string;
-  type: string;
+  films?: Array<FilmResponce>;
+  title?: string;
+  type?: string;
 }
 
 const FilmContent = (props: FilmContentType) => {
@@ -25,9 +25,9 @@ const FilmContent = (props: FilmContentType) => {
     slidesToScroll: 1,
   };
 
-  let images = props.films.map((elem) => {
+  let images = props.films?.map((elem) => {
     return (
-      <NavLink className={s.film_picture}  to={"/main/" + props.type + "/" + elem.picture}  key={elem._id}>
+      <NavLink className={s.film_picture}  to={"/main/" + props.type + "/" + elem._id}  key={elem._id}>
         <img src={`${API_URL_IMG}/${elem.picture}`} alt="" />
       </NavLink>
     );
@@ -38,15 +38,14 @@ const FilmContent = (props: FilmContentType) => {
       <div className={s.FilmContent__Inner}>
         <div
           className={s.FilmContent__name}
-          onClick={() => router(`/${props.type}`)}
+          onClick={() => router(`/main/${props.type}`)}
         >
           {props.title}
         </div>
   
       
         <Slider className={s.arrow} {...settings}>
-      {images}
-
+             {images}
           </Slider>
 
       </div>

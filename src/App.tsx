@@ -7,14 +7,13 @@ import { useEffect } from "react";
 import { ButtonSquare } from "./Components/Elements/Button/ButtonSquare";
 import { useDispatch } from "react-redux";
 import { chekAuth } from "./Redux/auth-reducer";
-import { CircularProgress } from "@mui/material";
 import UploadFilms from "./Components/UI/UploadFilms/UploadFilms";
 import MovieCatalog from "./Components/UI/MovieCatalog/MovieCatalog";
 import { useTypedSelector } from "./hooks/useTypedSelector";
 import FilmProfile from "./Components/UI/FilmProfile/FilmProfile";
 import { ModalStatus } from "./Components/Elements/Modal/ModalContext";
 import Loader from "./Components/Elements/Loader/Loader";
-import { getFilms } from "./Redux/filmCatalog-reducer";
+import FilmCertainGenre from "./Components/UI/FilmCertainGenre/FilmCertainGenre";
 
 
 function App() {
@@ -44,8 +43,9 @@ function App() {
         <div className={s.container}>
           <Routes>
             <Route path="/main" element={<MovieCatalog />} />
-            <Route path="/main/:gener/:id" element={<FilmProfile />} />
+            <Route path="/main/:genre/:id" element={<FilmProfile />} />
             <Route path="/Changes-Films" element={<UploadFilms />} />
+            <Route path="/main/:genre" element={<FilmCertainGenre />} />
             <Route path="*" element={<Navigate replace to="/main" />} />
           </Routes>
 

@@ -16,8 +16,8 @@ export interface initialFilmType {
 export interface initialStateType {
   film: initialFilmType;
   loading: boolean;
-  errorMessage:string
-  result:boolean
+  errorMessage?:string
+  result?:boolean
 }
 
 export enum actionType {

@@ -11,7 +11,7 @@ let initialState = {
   name: "string",
   picture:"",
   time:0,
-  genre:[],
+  genre:[""],
   release:""
   }],
   loading: false,
@@ -52,11 +52,11 @@ export const setLoading = (value: boolean): SetLoading => ({
 
 
 
-export const getFilms = (geners:Array<string>) => async (dispatch: Dispatch<filmCatalogActionType>) => {
+export const getFilms = (geners:Array<string>,limit:number) => async (dispatch: Dispatch<filmCatalogActionType>) => {
   try {
     dispatch(setLoading(true));
 
-    const response = await FilemService.getFilmGenre(geners);
+    const response = await FilemService.getFilmGenre(geners,limit);
     console.log(response.data);
     dispatch(setFilms(response.data));
   } catch (e: any) {

@@ -1,11 +1,11 @@
 import style from "../UploadFilms.module.scss";
 import { FC} from "react";
 import { useDispatch} from "react-redux";
-import { addFilm, setResult } from "../../../../Redux/filmProfile-reducer";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import {message } from 'antd';
 import { initialValuesType } from "../UploadFilms";
+import { addFilm, setResult } from "../../../../Redux/uploadFilm-reducer";
 
 
 
@@ -18,7 +18,7 @@ type FormUploadType ={
 
 const FormUpload: FC<FormUploadType> = (props) => {
 
-  const {result} = useTypedSelector(state=>state.filmProfile)
+  const {result} = useTypedSelector(state=>state.uploadFilm)
 
   const dispatch = useDispatch();
  

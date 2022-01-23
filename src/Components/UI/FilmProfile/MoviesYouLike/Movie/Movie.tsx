@@ -7,7 +7,7 @@ type Movie = {
   img: string;
   name: string;
   year: string;
-  time: string;
+  time: number;
 };
 
 const Movie: FC<Movie> = ({img,name,year,time}) => {

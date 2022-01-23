@@ -9,10 +9,10 @@ import Loader from "../../Elements/Loader/Loader";
 import { Button } from "@mui/material";
 import FormUpdate from "./FormUpload/FormUpdate";
 import { message } from "antd";
-import { setError } from "../../../Redux/filmProfile-reducer";
 import PicturesWall from "./UploadFile/UploadFile";
 import { TextFieldForm, TextFieldMultilineForm } from "./TextFiled/TiextField";
 import GenreFiled from "./GenreFiled/GenreFiled";
+import { setError } from "../../../Redux/uploadFilm-reducer";
 
 
 export interface initialValuesType  { 
@@ -33,11 +33,9 @@ const UploadFilms: FC = () => {
   const [button, setButton] = useState(true);
   const dispatch = useDispatch();
   const [form, setForm] = useState("");
-  const { loading } = useTypedSelector((state) => state.filmProfile);
+  const { loading,errorMessage } = useTypedSelector((state) => state.uploadFilm);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { errorMessage } = useTypedSelector(
-    (state) => state.filmProfile
-  );
+
 
   if (errorMessage) {
     const key = "updatable";

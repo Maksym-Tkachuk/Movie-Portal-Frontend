@@ -7,11 +7,13 @@ import filemInformationReducer from "./filmeIformation-reducer";
 import filmProfileReducer from "./filmProfile-reducer";
 
 import profileReducer from "./profile-reducer";
+import uploadFilmReducer from "./uploadFilm-reducer";
 
 export let rootReducers = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   filmProfile: filmProfileReducer,
+  uploadFilm:uploadFilmReducer,
   filemInformation:  filemInformationReducer,
   filmsCatalog: filmCatalog
 
