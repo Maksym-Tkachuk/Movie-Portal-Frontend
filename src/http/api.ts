@@ -1,9 +1,9 @@
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 
-export const API_URL = "https://movie-portal-backend.herokuapp.com//api";
+export const API_URL = "https://movie-portal-backend.herokuapp.com/api";
 
-export const API_URL_IMG = "https://movie-portal-backend.herokuapp.com/"
+export const API_URL_IMG = "https://movie-portal-backend.herokuapp.com"
 
 const $api = axios.create({
   withCredentials: true,
