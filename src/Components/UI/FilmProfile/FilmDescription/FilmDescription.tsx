@@ -2,11 +2,9 @@ import { FC } from "react";
 import style from "./FilmDescription.module.scss";
 import { Rate } from "antd";
 import qualityFilm from "../../../../img/icon_for_film/hd.png";
-import film from "../../../../img/Action/tomorrwWar.jpg";
 import CountryFlags from "./CountryFlags";
 import { initialFilmType } from "../../../../types/film";
-import { API_URL_IMG } from "../../../../http/api";
-import { spawn } from "child_process";
+
 
 
 
@@ -16,7 +14,7 @@ const FilmDescription: FC<initialFilmType> = (props) => {
   return (
     <div className={style.all_infoemation}>
       <div className={style.description}>
-        <img src={`${API_URL_IMG}/${props.picture}`} alt="" />
+        <img src={`${props.picture}`} alt="" />
         <div className={style.film_description}>
           <div className={style.name_film}>{props.name}</div>
           <div className={style.film_characteristiv}>
@@ -37,7 +35,7 @@ const FilmDescription: FC<initialFilmType> = (props) => {
       <div className={style.additional_information}>
         <div className={style.county_name}>
           <span>{props.country}</span>
-          <CountryFlags country={`props.country`} />
+          <CountryFlags country={`${props.country}`} />
         </div>
         <div className={style.film_information}>
           <div className={style.film_fileds}>

@@ -27,7 +27,7 @@ const MoviesYouLike: FC<MoviesYouLike> = (props) => {
         
         {//@ts-ignore
         films.map((elem:{time:number,name:string,film:string,release:string,_id:string})=>{
-          return <Movie  key={elem._id} time={elem.time}  name={elem.name} img={`${API_URL_IMG}/${film}`} year={elem.release}/>
+          return <Movie  key={elem._id} time={elem.time}  name={elem.name} img={film} year={elem.release}/>
         })
         }
       </div>

@@ -28,7 +28,7 @@ const FilmContent = (props: FilmContentType) => {
   let images = props.films?.map((elem) => {
     return (
       <NavLink className={s.film_picture}  to={"/main/" + props.type + "/" + elem._id}  key={elem._id}>
-        <img src={`${API_URL_IMG}/${elem.picture}`} alt="" />
+        <img src={elem.picture} alt="" />
       </NavLink>
     );
   });

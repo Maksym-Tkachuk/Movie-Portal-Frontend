@@ -3,7 +3,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import {  useMemo, useState } from 'react';
 import style from '../UploadFilms.module.scss'
 
-function getBase64(file:any) {
+export function getBase64(file:any) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -39,7 +39,7 @@ const PicturesWall =(props:any) =>{
 
 
   useMemo(()=>{
-    if(picture.length==0){
+    if(picture==""){
       setState({...state,previewVisible: false, previewImage: '', fileList:[],})
     }
   },[picture])
@@ -72,17 +72,15 @@ const  handleChange = ({ fileList }:any) =>{
     );
 
 
-    function fileUploadHandler(event:any) {
+   const fileUploadHandler = async (event:any)=> {
       const file = event.file;
-      props.form.values.picture = file.originFileObj;
-      
+      console.log(file)
+      props.form.values.picture = await getBase64(file.originFileObj);
     }
 
 
     return (
       <>
-     
-
       <Upload
           listType="picture-card"
           fileList={fileList}

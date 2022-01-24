@@ -36,7 +36,7 @@ const FilmCertainGenre: FC = () => {
   let images = films.map((elem:any) => {
     return (
       <NavLink className={s.film_picture}  to={"/main/" + genre + "/" + elem._id}  key={elem._id}>
-        <img src={`${API_URL_IMG}/${elem.picture}`} alt="" />
+        <img src={elem.picture} alt="" />
       </NavLink>
     );
   });

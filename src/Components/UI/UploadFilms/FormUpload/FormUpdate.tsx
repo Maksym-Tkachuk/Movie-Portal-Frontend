@@ -94,7 +94,7 @@ const FormUpdate: FC<FormUpdateType> = (props) => {
             className={style.picture}
             src={
               values.picture && typeof values.picture == "string"
-                ? `${API_URL_IMG}/${values.picture}`
+                ? `${values.picture}`
                 : `https://i1.7fon.org/thumb/g214883.jpg`
             }
           />
