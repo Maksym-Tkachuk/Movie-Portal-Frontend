@@ -1,6 +1,6 @@
 import { FilmResponce } from './../models/response/FilmGenreResponce';
-import { AxiosResponse } from "axios";
-import $api from "../http/api";
+import axios, { AxiosResponse } from "axios";
+import $api, { API_URL } from "../http/api";
 import { initialFilmType } from "../types/film";
 
 export default class FilemService {
@@ -8,7 +8,7 @@ export default class FilemService {
     return $api.post("/film", formData);
   }
   static async getFilmGenre(genre:Array<string>,limit:number): Promise<AxiosResponse<Array<FilmResponce>>> {
-    return $api.post("/film/genre", {genre:genre,limit:limit});
+    return $api.post(`/film/genre`, {genre:genre,limit:limit});
   }
   static async getFilm(): Promise<AxiosResponse<initialFilmType>> {
     return $api.get("/films");

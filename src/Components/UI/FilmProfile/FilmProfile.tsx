@@ -6,21 +6,30 @@ import MovieComponent from "./MovieComponent/MovieComponent";
 import FilmDescription from "./FilmDescription/FilmDescription";
 import MoviesYouLike from "./MoviesYouLike/MoviesYouLike";
 import { useDispatch } from "react-redux";
-import { findFilById } from "../../../Redux/filmProfile-reducer";
+import { findFilById, getMoviesLike } from "../../../Redux/filmProfile-reducer";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import Loader from "../../Elements/Loader/Loader";
 interface FilmProfileType {}
 
 const FilmProfile: FC<FilmProfileType> = (props) => {
   const urlParams = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-     dispatch(findFilById(urlParams.id))
-  },[])
+  useEffect(() => {
+    dispatch(findFilById(urlParams.id));
+  }, [urlParams.id]);
 
-  const {loading,film}= useTypedSelector(state=>state.uploadFilm)
-  console.log(film)
+  const { loading, film} = useTypedSelector((state) => state.filmProfile);
+
+  useEffect(() => {
+    dispatch(getMoviesLike(film.genre, 6));
+  }, [film.genre]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <Breadcrumb className={style.navigate}>
@@ -31,10 +40,10 @@ const FilmProfile: FC<FilmProfileType> = (props) => {
           {urlParams.genre}
         </Breadcrumb.Item>
       </Breadcrumb>
-      <MovieComponent movie={film.moving}/>
+      <MovieComponent movie={film.moving} />
       <div className={style.content}>
-        <FilmDescription {...film}/>
-       <MoviesYouLike genres = {film.genre}/>
+        <FilmDescription {...film} />
+        <MoviesYouLike genres={film.genre} />
       </div>
     </div>
   );

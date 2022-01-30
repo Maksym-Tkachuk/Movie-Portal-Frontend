@@ -16,9 +16,9 @@ import Profile from "./Profile/Profile";
 const Header:FC = () => {
 
 const modalWindow = useContext(ModalContext)
-
-
 const {userName} = useTypedSelector(state=>state.auth.user)
+
+
   return (
     <header className={s.header}>
       <div className={s.header__inner}>

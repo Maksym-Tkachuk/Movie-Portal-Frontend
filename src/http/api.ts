@@ -1,13 +1,13 @@
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 
-export const API_URL = "https://movie-portal-backend.herokuapp.com/api";
+export const API_URL = "http://localhost:5000/api";
 
-export const API_URL_IMG = "https://movie-portal-backend.herokuapp.com"
+export const API_URL_IMG = "http://localhost:5000"
 
 const $api = axios.create({
   withCredentials: true,
-  baseURL: API_URL
+  baseURL: API_URL,
 })
 
 $api.interceptors.request.use((config:any) => {
@@ -26,7 +26,7 @@ $api.interceptors.response.use((config) => {
       originalRequest._isRetry = true;
       try {
         debugger
-          const response = await axios.get<AuthResponse>(`${API_URL}/refresh?token=${localStorage.getItem('tokenRefresh')}`, {withCredentials: true})
+          const response = await axios.post<AuthResponse>(`${API_URL}/refresh`,{token:localStorage.getItem('tokenRefresh')}, {withCredentials: true})
           localStorage.setItem('token', response.data.accessToken);
           localStorage.setItem("tokenRefresh", response.data.refreshToken);
           return $api.request(originalRequest);

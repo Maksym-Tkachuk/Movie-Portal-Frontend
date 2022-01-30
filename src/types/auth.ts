@@ -3,7 +3,7 @@ import { IUser } from "../models/User";
 export enum actionType {
   SET_IS_AUTH = "SET-IS-AUTH",
   SET_USER = "SET-USER",
-  SET_LOADING = "SET-LOADING",
+  SET_LOADING_AUTH = "SET-LOADING-AUTH",
   SET_ERROR_LOGIN = "SET-ERROR-LOGIN",
   SET_ERROR_REGISTRATION = "SET-ERROR-REGISTRATION",
   SET_IS_LOADING_LOGR_REG = "SET-IS-LOADING-LOGR-REG",
@@ -19,7 +19,7 @@ export interface SetUser {
   user: IUser;
 }
 export interface SetLoading {
-  type: actionType.SET_LOADING;
+  type: actionType.SET_LOADING_AUTH;
   loading: boolean;
 }
 export interface SetErrorLogin {

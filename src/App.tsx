@@ -14,6 +14,8 @@ import FilmProfile from "./Components/UI/FilmProfile/FilmProfile";
 import { ModalStatus } from "./Components/Elements/Modal/ModalContext";
 import Loader from "./Components/Elements/Loader/Loader";
 import FilmCertainGenre from "./Components/UI/FilmCertainGenre/FilmCertainGenre";
+import { getFilms } from "./Redux/filmCatalog-reducer";
+import { Geners } from "./Components/UI/UploadFilms/GenreFiled/GenreFiled";
 
 
 function App() {
@@ -23,22 +25,21 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(chekAuth());
-    }
+    }   
+    ["Фантастика","Боевик","Комедия","Романтика","Драма","Документальный","Ужасы"].forEach(  (elem) =>  dispatch(getFilms([elem], 7)));  
   }, []);
-
-
-
+  // const GenresForDispatch = Geners.map((elem) => elem.title);
+  
   if (isLoading) {
-    return <Loader/>
+    return <Loader />;
   }
 
   return (
     <ModalStatus>
       <div className={s.Wrraper}>
-        {!isAuth && ( <ModalWindow />)}
+        {!isAuth && <ModalWindow />}
 
         <Header />
-
 
         <div className={s.container}>
           <Routes>
@@ -48,12 +49,10 @@ function App() {
             <Route path="/main/:genre" element={<FilmCertainGenre />} />
             <Route path="*" element={<Navigate replace to="/main" />} />
           </Routes>
-
-          { isAuth || (  <ButtonSquare big={true}  text={"Sign in"}  /> )}
-
-          <Footer />
-
+          {isAuth || <ButtonSquare big={true} text={"Sign in"} />}
         </div>
+
+        <Footer />
       </div>
     </ModalStatus>
   );

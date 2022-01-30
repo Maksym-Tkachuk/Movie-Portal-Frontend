@@ -5,7 +5,8 @@ import style from './Footer.module.scss';
 const Footer = (props) => {
     return (
         <footer className={style.footer}>
-            <div className={style.footer__links}>
+            <div>
+                  <div className={style.footer__links}>
                 <div className={style.nameLink}>
                     Links
                 </div>
@@ -30,6 +31,8 @@ const Footer = (props) => {
                     <div>This site does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</div>
                 </div>
             </div>
+            </div>
+          
         </footer>
     )
 }

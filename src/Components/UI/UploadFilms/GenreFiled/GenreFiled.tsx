@@ -1,11 +1,14 @@
 import { useMemo, useState } from "react";
-import { Autocomplete, Chip, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 
 export default function GenreFiled({ field, form, ...props }: any) {
-  const { film } = useTypedSelector((state) => state.filmProfile);
+  const { film } = useTypedSelector((state) => state.uploadFilm);
 
   const [genre, setGenre] = useState<Array<any>>([...film.genre]);
+
+
+ 
 
   let genreParam = [...film.genre].map((elem) => {
     return { title: elem };

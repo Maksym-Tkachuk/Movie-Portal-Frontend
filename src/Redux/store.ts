@@ -3,7 +3,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import authReducer from "./auth-reducer";
 import filmCatalog from "./filmCatalog-reducer";
-import filemInformationReducer from "./filmeIformation-reducer";
 import filmProfileReducer from "./filmProfile-reducer";
 
 import profileReducer from "./profile-reducer";
@@ -13,10 +12,8 @@ export let rootReducers = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   filmProfile: filmProfileReducer,
-  uploadFilm:uploadFilmReducer,
-  filemInformation:  filemInformationReducer,
-  filmsCatalog: filmCatalog
-
+  uploadFilm: uploadFilmReducer,
+  filmsCatalog: filmCatalog,
 });
 
 let store = createStore(

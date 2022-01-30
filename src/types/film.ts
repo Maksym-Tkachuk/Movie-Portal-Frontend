@@ -25,7 +25,8 @@ export enum actionType {
   SET_LOADING = "SET-LOADING",
   SET_ERROR = "SET-ERROR",
   SET_RESULT = "SET-RESULT",
-  DELETE_FILM = "DELETE_FILM"
+  DELETE_FILM = "DELETE_FILM",
+  SET_UPLOAD_LOADING="SET-UPLOAD-LOADING"
 }
 
 export interface SetInformationAboutFilm {
@@ -35,6 +36,10 @@ export interface SetInformationAboutFilm {
 
 export interface SetLoading {
   type: actionType.SET_LOADING;
+  payload: boolean;
+}
+export interface SetUploadLoading {
+  type: actionType.SET_UPLOAD_LOADING;
   payload: boolean;
 }
 export interface SetError {
@@ -49,4 +54,4 @@ export interface SetResult {
 export interface DeleteFilm {
   type: actionType.DELETE_FILM;
 }
-export type filmActionType = SetInformationAboutFilm | SetLoading | SetError | SetResult | DeleteFilm; 
+export type filmActionType = SetInformationAboutFilm | SetLoading | SetError | SetResult | DeleteFilm | SetUploadLoading; 

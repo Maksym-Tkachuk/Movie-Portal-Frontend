@@ -32,7 +32,7 @@ const authReducer = (state: InitialStateType = initialState, action: authActionT
         ...state,
         user: action.user,
       };
-    case actionType.SET_LOADING:
+    case actionType.SET_LOADING_AUTH:
       return {
         ...state,
         isLoading: action.loading,
@@ -61,7 +61,7 @@ const authReducer = (state: InitialStateType = initialState, action: authActionT
 export const setAuth = (isAuth: boolean):SetIsAuth => ({ type: actionType.SET_IS_AUTH, isAuth });
 export const setUser = (user: IUser):SetUser => ({ type: actionType.SET_USER, user });
 export const setLoading = (loading: boolean):SetLoading => ({
-  type: actionType.SET_LOADING,
+  type: actionType.SET_LOADING_AUTH,
   loading,
 });
 export const setErrorLogin = (errorLogin: string):SetErrorLogin=> ({
@@ -82,7 +82,6 @@ export const login =
     dispatch(setIsLoadingLogReag(true));
     try {
       let response = await AuthService.login(email, password);
-
       localStorage.setItem("token", response.data.accessToken);
       localStorage.setItem("tokenRefresh", response.data.refreshToken);
       dispatch(setAuth(true));
@@ -137,10 +136,9 @@ export const chekAuth = () => async (dispatch:Dispatch<authActionType>) => {
   dispatch(setLoading(true));
   try {
    
-    const response = await axios.get<AuthResponse>(`${API_URL}/refresh?token=${localStorage.getItem('tokenRefresh')}`, {
-      withCredentials: true,
+    const response = await axios.post<AuthResponse>(`${API_URL}/refresh`,{token:localStorage.getItem('tokenRefresh')}, {
+      withCredentials: true
     });
-    
     console.log(response);
     localStorage.setItem("token", response.data.accessToken);
     localStorage.setItem("tokenRefresh", response.data.refreshToken);

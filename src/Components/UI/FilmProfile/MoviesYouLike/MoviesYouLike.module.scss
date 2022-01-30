@@ -3,6 +3,7 @@
 
 .like_movies {
   width: 350px;
+  position: relative;
   font-family: "Roboto", sans-serif;
   & .title {
     @include styleText(48, 56);

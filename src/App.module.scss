@@ -1,19 +1,27 @@
 @import "./source/nullstyle.scss";
 
+html,
+body {
+  min-height: 100%;
+}
+
 .Wrraper {
   background-color: #000;
   color: white;
-
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   & > .container {
-    position: relative;
-    max-width: 1408px;
     margin: 0 auto;
+    max-width: 1408px;
     padding: 0 41px;
+    width: 100%;
   }
 }
 
-.CircularProgress{
+.CircularProgress {
   width: 200px;
   height: 200px;
   position: fixed;

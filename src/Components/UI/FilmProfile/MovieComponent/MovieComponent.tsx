@@ -5,15 +5,24 @@ import tv_button from "../../../../img/icon_for_film/tv_button.svg";
 import play_button from "../../../../img/icon_for_film/playButton.svg";
 import style from "./MovieComponent.module.scss";
 import ControlPanel from "./ControlPanel";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import Loader from "../../../Elements/Loader/Loader";
 
 interface FilmProfileType {
   movie:any
 }
 
+
+
+
+
 const MovieComponent: FC<FilmProfileType> = ({movie}) => {
+
+
+  
   return (
     <div>
-      <ReactPlayer
+    <ReactPlayer
         className={style.video}
         playIcon={<img src={play} />}
         light

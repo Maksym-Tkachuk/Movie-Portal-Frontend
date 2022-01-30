@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { initialValuesType } from "../Components/UI/UploadFilms/UploadFilms";
 import FilemService from "../Service/FilmService";
-import {filmActionType, actionType,initialStateType, initialFilmType,SetInformationAboutFilm,SetLoading,SetError,SetResult,DeleteFilm} from "../types/film";
+import {filmActionType, actionType,initialStateType, initialFilmType,SetInformationAboutFilm,SetLoading,SetError,SetResult,DeleteFilm, SetUploadLoading} from "../types/film";
 
 let initialState: initialStateType = {
   film: {
@@ -35,11 +35,6 @@ const uploadFilmReducer = (
         ...state,
         film: { ...action.payload },
       };
-    case actionType.SET_LOADING:
-      return {
-        ...state,
-        loading: action.payload,
-      };
     case actionType.SET_ERROR:
       return {
         ...state,
@@ -55,6 +50,11 @@ const uploadFilmReducer = (
         ...state,
         film: { ...initialState.film },
       };
+      case actionType.SET_UPLOAD_LOADING:
+        return {
+          ...state,
+          loading: action.payload,
+        };
     default:
       return state;
   }
@@ -64,8 +64,8 @@ export const setFilm = (film: initialFilmType): SetInformationAboutFilm => ({
   type: actionType.SET_INFORMATION_ABOUT_FILM,
   payload: { ...film },
 });
-export const setLoading = (value: boolean): SetLoading => ({
-  type: actionType.SET_LOADING,
+export const setLoading = (value: boolean): SetUploadLoading => ({
+  type: actionType.SET_UPLOAD_LOADING,
   payload: value,
 });
 
@@ -141,7 +141,7 @@ export const findFilm =
       const response = await FilemService.findFilm(name);
       dispatch(setFilm(response.data));
     } catch (e: any) {
-      console.log(e.response?.data?.message);
+      console.log(e?.response);
       dispatch(setError(e.response?.data?.message));
     } finally {
       dispatch(setLoading(false));

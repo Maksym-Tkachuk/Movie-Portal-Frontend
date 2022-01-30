@@ -2,11 +2,15 @@
 @import "../../../source/objectStyle.scss";
 
 .footer {
-  padding: 50px 0;
+  padding: 50px 41px;
   font-family: "Bitter", serif;
-  display: flex;
+ 
   justify-content: space-between;
   align-items: center;
+  &>div{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .nameLink,
 .description__name {

@@ -35,10 +35,12 @@ export const setAvatar = (avatar: string): SetAvatarImg => ({
 export const userAvatar =
   (file: string) => async (dispatch: Dispatch<userAvatarActionType>) => {
     try {
+      
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("img", file);
       const responce = await ProfileService.changeAvatar(formData);
       dispatch(setAvatar(responce.data.avatar));
+      console.log(responce.data)
     } catch (e: any) {
       console.log(e.response?.data?.message);
     }

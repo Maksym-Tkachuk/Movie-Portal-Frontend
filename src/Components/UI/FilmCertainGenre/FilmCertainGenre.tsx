@@ -2,44 +2,53 @@ import { NavLink } from "react-router-dom";
 import s from "./FilmCertainGenre.module.scss";
 import { useNavigate, useParams } from "react-router";
 
-import { FC, useEffect, useMemo } from "react";
-import { API_URL_IMG } from "../../../http/api";
+import { FC, useEffect } from "react";
+
 import { AllGeners } from "../MovieCatalog/MovieCatalog";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { getFilms } from "../../../Redux/filmCatalog-reducer";
+import { getFilmsGenre } from "../../../Redux/filmCatalog-reducer";
+import Loader from "../../Elements/Loader/Loader";
 
 const FilmCertainGenre: FC = () => {
   const router = useNavigate();
   const params = useParams();
-  const dispatch = useDispatch()
-  const genre = params.genre
-  const {films} = useTypedSelector(state=>state.filmsCatalog)
+  const dispatch = useDispatch();
+  const genre = params.genre;
+  const { filmsGenre, loading } = useTypedSelector(
+    (state) => state.filmsCatalog
+  );
 
-  console.log(films)
-  let filmsGenre = ""
+  let filmsGenres = "";
 
-   for (let value in AllGeners){
-    if(value == genre){
+  for (let value in AllGeners) {
+    if (value == genre) {
       //@ts-ignore
-      filmsGenre =  AllGeners[value]
+      filmsGenres = AllGeners[value];
     }
   }
 
-  useEffect(()=>{
-    dispatch(getFilms([filmsGenre],20))
-},[])
+  useEffect(() => {
+    // if(!filmsGenre.every(elem=>elem.genre.some(elem=>elem ==filmsGenres)))
+    dispatch(getFilmsGenre([filmsGenres], 12));
+  }, []);
 
-
-
-//@ts-ignore
-  let images = films.map((elem:any) => {
+  //@ts-ignore
+  let images = filmsGenre.map((elem: any) => {
     return (
-      <NavLink className={s.film_picture}  to={"/main/" + genre + "/" + elem._id}  key={elem._id}>
+      <NavLink
+        className={s.film_picture}
+        to={"/main/" + genre + "/" + elem._id}
+        key={elem._id}
+      >
         <img src={elem.picture} alt="" />
       </NavLink>
     );
   });
+
+  if (loading) {
+  return   <Loader />;
+  }
 
   return (
     <section className={s.FilmContent}>
@@ -48,9 +57,8 @@ const FilmCertainGenre: FC = () => {
           className={s.FilmContent__name}
           onClick={() => router(`/main/${genre}`)}
         >
-          {filmsGenre}
+          {filmsGenres}
         </div>
-
         <div className={s.listOfMovies}>{images}</div>
       </div>
     </section>

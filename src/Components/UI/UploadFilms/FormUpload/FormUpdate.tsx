@@ -25,7 +25,7 @@ const FormUpdate: FC<FormUpdateType> = (props) => {
   const { result, film } = useTypedSelector((state) => state.uploadFilm);
   
 
-
+console.log(film)
 
 
   if (result && props.button == true) {

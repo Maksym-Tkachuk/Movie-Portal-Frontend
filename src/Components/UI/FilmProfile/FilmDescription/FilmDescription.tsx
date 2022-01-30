@@ -11,6 +11,9 @@ import { initialFilmType } from "../../../../types/film";
 
 const FilmDescription: FC<initialFilmType> = (props) => {
 
+
+
+  
   return (
     <div className={style.all_infoemation}>
       <div className={style.description}>

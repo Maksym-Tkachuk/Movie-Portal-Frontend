@@ -74,8 +74,9 @@ const  handleChange = ({ fileList }:any) =>{
 
    const fileUploadHandler = async (event:any)=> {
       const file = event.file;
-      console.log(file)
-      props.form.values.picture = await getBase64(file.originFileObj);
+      console.log(file.originFileObj)
+      props.form.values.picture = file.originFileObj
+      
     }
 
 

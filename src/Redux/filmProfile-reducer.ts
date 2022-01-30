@@ -1,6 +1,8 @@
 import { Dispatch } from "redux";
 import FilemService from "../Service/FilmService";
-import {filmActionType, actionType,initialStateType,initialFilmType,SetInformationAboutFilm,SetLoading} from "./../types/film";
+import { actionType, filmActionType, initialFilmType, initialStateType, moviesYouLike, SetInformationAboutFilm, SetLoading, SetMoviesYouLike } from "../types/profileFilm";
+
+
 
 let initialState: initialStateType = {
   film: {
@@ -18,6 +20,15 @@ let initialState: initialStateType = {
     cast: "",
   },
   loading: false,
+  loadingFilmsLike:false,
+  moviesYouLike:[{
+    _id:"",
+    genre:[""],
+    name:"",
+    picture:"",
+    release:"",
+    time:""
+  }]
 };
 
 
@@ -26,27 +37,40 @@ const filmProfileReducer = (
   action: filmActionType
 ): initialStateType => {
   switch (action.type) {
-    case actionType.SET_INFORMATION_ABOUT_FILM:
+    case actionType.SET_PROFILE_FILM:
       return {
         ...state,
         film: { ...action.payload },
       };
-    case actionType.SET_LOADING:
+    case actionType.SET_LOADING_PROFILE_FILM:
       return {
         ...state,
         loading: action.payload,
       };
+      case actionType.SET_MOVIES_YOU_LIKE:
+        return {
+          ...state,
+          moviesYouLike: [...action.payload],
+        };
     default:
       return state;
   }
 };
 
 export const setFilm = (film: initialFilmType): SetInformationAboutFilm => ({
-  type: actionType.SET_INFORMATION_ABOUT_FILM,
+  type: actionType.SET_PROFILE_FILM,
   payload: { ...film },
 });
+export const setMoviesYouLike = (films:Array<moviesYouLike> ): SetMoviesYouLike => ({
+  type: actionType.SET_MOVIES_YOU_LIKE,
+  payload: films,
+});
 export const setLoading = (value: boolean): SetLoading => ({
-  type: actionType.SET_LOADING,
+  type: actionType.SET_LOADING_PROFILE_FILM,
+  payload: value,
+});
+export const setLoadingFilmsLike = (value: boolean): SetLoading => ({
+  type: actionType.SET_LOADING_PROFILE_FILM,
   payload: value,
 });
 
@@ -65,6 +89,17 @@ export const findFilById = (id: string | undefined) => async (dispatch: Dispatch
     }
   };
 
-
+  export const getMoviesLike = (geners:Array<string>,limit:number) => async (dispatch: Dispatch<filmActionType>) => {
+    try {
+      dispatch(setLoadingFilmsLike(true));
+      const response = await FilemService.getFilmGenre(geners,limit);
+      //@ts-ignore
+      dispatch(setMoviesYouLike(response.data));
+    } catch (e: any) {
+      console.log(e.response?.data?.message);
+    } finally {
+      dispatch(setLoadingFilmsLike(false));
+    }
+  };
 
 export default filmProfileReducer;
