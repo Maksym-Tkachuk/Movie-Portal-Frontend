@@ -11,16 +11,7 @@ import {
 import { FilmResponce } from "../models/response/FilmGenreResponce";
 
 let initialState: initialfilmSearchState = {
-  filmSearch: [
-    {
-      _id: "",
-      name: "",
-      picture: "",
-      time: "0",
-      genre: [""],
-      release: 0,
-    },
-  ],
+  filmSearch: [],
   loading: false,
   message: "",
 };

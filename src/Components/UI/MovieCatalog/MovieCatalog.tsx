@@ -83,7 +83,7 @@ const MovieCatalog: FC = () => {
     <div>
       {isAuth || <EnterInformation />}
       <SearchForm/>
-      {filmSearch.length<2? filmDepartments: <FilmSearch/>}
+      {filmSearch.length ==0 ? filmDepartments: <FilmSearch/>}
     </div>
   );
 };

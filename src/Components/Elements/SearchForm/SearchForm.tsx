@@ -16,13 +16,13 @@ const SearchForm: FC = () => {
         clearTimeout(searchTimeout)
     }
     dispatch(setLoading(true))
-    
+
     if(e.target.value != '') {
         setSearchTimeout(setTimeout((value) => {
             dispatch(getFilmSearch(value));
         }, 500, e.target.value))
     } else {
-        dispatch(setFilmSearch([filmSearch[1]]))
+        dispatch(setFilmSearch([{ _id: "", name: "", picture: "",time: "0",genre: [""],release: 0}]))
     }
 }
 
