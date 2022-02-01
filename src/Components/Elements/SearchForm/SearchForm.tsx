@@ -2,30 +2,41 @@ import { FC, ReactEventHandler, useEffect, useState } from "react";
 import s from "./SearchForm.module.scss";
 import arrow from "../../../img/icon_for_search/right-arrow.svg";
 import { useDispatch } from "react-redux";
-import { getFilmSearch, setFilmSearch, setLoading } from "../../../Redux/filmSearch-reducer";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import {
+  getFilmSearch,
+  setFilmSearch,
+  setLoading,
+} from "../../../Redux/filmSearch-reducer";
+import { useLocation } from "react-router";
 const SearchForm: FC = () => {
   const [value, setValue] = useState<string>("");
-  const [searchTimeout, setSearchTimeout] = useState<any>(false)
+  const [searchTimeout, setSearchTimeout] = useState<any>(false);
   const dispatch = useDispatch();
-  const {filmSearch} = useTypedSelector(state=>state.filmSearch)
+  const urlParams = useLocation();
 
-  function searchChangeHandler(e:any) {
-    setValue(e.target.value)
+  console.log(urlParams)
+  function searchChangeHandler(e: any) {
+    setValue(e.target.value);
     if (searchTimeout != false) {
-        clearTimeout(searchTimeout)
+      clearTimeout(searchTimeout);
     }
-    dispatch(setLoading(true))
+    dispatch(setLoading(true));
 
-    if(e.target.value != '') {
-        setSearchTimeout(setTimeout((value) => {
+    if (e.target.value != "") {
+      setSearchTimeout(
+        setTimeout(
+          (value) => {
             dispatch(getFilmSearch(value));
-        }, 500, e.target.value))
+          },
+          500,
+          e.target.value
+        )
+      );
     } else {
-        dispatch(setFilmSearch([]))
+      dispatch(setFilmSearch([]));
     }
-}
-
+  }
+  useEffect(() => {dispatch(setFilmSearch([]))}, [urlParams.pathname]);
 
   return (
     <div className={s.SearchForm}>
