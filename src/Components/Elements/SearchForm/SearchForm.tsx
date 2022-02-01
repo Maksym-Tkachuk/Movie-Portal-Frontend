@@ -22,7 +22,7 @@ const SearchForm: FC = () => {
             dispatch(getFilmSearch(value));
         }, 500, e.target.value))
     } else {
-        dispatch(setFilmSearch([{ _id: "", name: "", picture: "",time: "0",genre: [""],release: 0}]))
+        dispatch(setFilmSearch([]))
     }
 }
 
