@@ -13,15 +13,17 @@
 .listOfMovies {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11.06rem, 1fr));
-  grid-gap: 53px;
+  grid-column-gap: 50px;
   justify-items: center;
 }
 .film_picture{
-  max-width: 177px;
-  height: 255px;
+  width: 177px;
+  & div{
+    width: 100%;
+  }
   & img{
     width: 100%;
-    height: 100%;
+    height: 255px;
   }
 }
 

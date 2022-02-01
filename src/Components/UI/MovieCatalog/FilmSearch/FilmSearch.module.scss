@@ -1,0 +1,16 @@
+.listOfMovies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11.06rem, 1fr));
+    grid-column-gap: 50px;
+    justify-items: center;
+  }
+  .film_picture{
+    width: 177px;
+    & div{
+      width: 100%;
+    }
+    & img{
+      width: 100%;
+      height: 255px;
+    }
+  }

@@ -9,13 +9,14 @@
   content: "ᐳ" !important;
 }
 .slick-prev:before {
-  content: "ᐳ" !important;
-}
-.slick-prev {
-  transform: rotate(180deg) !important;
+  content: "ᐸ" !important;
 }
 .slick-initialized .slick-slide {
   display: flex !important;
   justify-content: center;
   cursor: pointer;
+}
+
+.slick-prev, .slick-next {
+  top: 35% !important;
 }

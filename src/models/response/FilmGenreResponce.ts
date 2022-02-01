@@ -1,8 +1,8 @@
 export interface FilmResponce {
   _id: string;
-  name: string;
+  name: string; 
   picture:string;
-  time:Number;
+  time:string;
   genre:Array<string>
-  release:string
+  release:Number
 }

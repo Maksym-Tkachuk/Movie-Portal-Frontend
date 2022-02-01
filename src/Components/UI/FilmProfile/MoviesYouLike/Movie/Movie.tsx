@@ -5,7 +5,7 @@ import style from "./Movie.module.scss";
 type Movie = {
   img: string;
   name: string;
-  year: string;
+  year: Number;
   time: string;
 };
 

@@ -10,6 +10,9 @@ export default class FilemService {
   static async getFilmGenre(genre:Array<string>,limit:number): Promise<AxiosResponse<Array<FilmResponce>>> {
     return $api.post(`/film/genre`, {genre:genre,limit:limit});
   }
+  static async getFilmSearch(name:string): Promise<AxiosResponse<Array<FilmResponce>>> {
+    return $api.post(`/films/search`, {name});
+  }
   static async getFilm(): Promise<AxiosResponse<initialFilmType>> {
     return $api.get("/films");
   }

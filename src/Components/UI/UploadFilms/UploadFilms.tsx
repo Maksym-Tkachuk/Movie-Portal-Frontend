@@ -18,7 +18,7 @@ import { setError } from "../../../Redux/uploadFilm-reducer";
 export interface initialValuesType  { 
   name: String , 
   moving: String,
-  release: String
+  release: Number
   description: String
   genre: Array<string> | null
   country: String

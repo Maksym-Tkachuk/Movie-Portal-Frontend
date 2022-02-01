@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loader from "../../../Elements/Loader/Loader";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
-import { CircularProgress } from "@mui/material";
+import Movie from "../../FilmProfile/MoviesYouLike/Movie/Movie";
 interface FilmContentType {
   films?: Array<FilmResponce>;
   title?: string;
@@ -25,25 +25,45 @@ const FilmContent = (props: FilmContentType) => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 650,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   let images = props.films?.map((elem) => {
     return (
-      <NavLink
-        className={s.film_picture}
-        to={"/main/" + props.type + "/" + elem._id}
-        key={elem._id}
-      >
-        <img src={`${elem.picture}`} alt="" />
+      <NavLink className={s.film_picture} to={"/main/" + props.type + "/" + elem._id}  key={elem._id} >
+         <Movie key={elem._id} time={elem.time} name={elem.name}  img={elem.picture} year={elem.release} />
       </NavLink>
     );
   });
 
-if(loading){
- return <Loader /> 
-}
-
-
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <section className={s.FilmContent}>
@@ -52,12 +72,11 @@ if(loading){
           className={s.FilmContent__name}
           onClick={() => router(`/main/${props.type}`)}
         >
-          { props.title}
+          {props.title}
         </div>
-          <Slider className={s.arrow} {...settings}>
+        <Slider className={s.arrow} {...settings}>
           {images}
         </Slider>
-      
       </div>
     </section>
   );

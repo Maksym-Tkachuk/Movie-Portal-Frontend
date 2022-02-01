@@ -13,9 +13,9 @@ let initialState: initialStateType = {
     picture: "",
     country: "",
     time: "",
-    rating: "",
+    rating: 0,
     genre: [],
-    release: "",
+    release: 0,
     director: "",
     cast: "",
   },
@@ -26,7 +26,7 @@ let initialState: initialStateType = {
     genre:[""],
     name:"",
     picture:"",
-    release:"",
+    release:0,
     time:""
   }]
 };

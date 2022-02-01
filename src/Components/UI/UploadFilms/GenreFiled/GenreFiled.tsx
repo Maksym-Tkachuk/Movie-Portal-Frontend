@@ -47,7 +47,6 @@ export default function GenreFiled({ field, form, ...props }: any) {
 }
 
 export const Geners = [
-  { title: "Аниме" },
   { title: "Биографический" },
   { title: "Боевик" },
   { title: "Вестерн" },

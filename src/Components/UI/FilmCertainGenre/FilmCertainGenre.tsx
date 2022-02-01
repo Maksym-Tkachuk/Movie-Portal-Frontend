@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { getFilmsGenre } from "../../../Redux/filmCatalog-reducer";
 import Loader from "../../Elements/Loader/Loader";
+import Movie from "../FilmProfile/MoviesYouLike/Movie/Movie";
 
 const FilmCertainGenre: FC = () => {
   const router = useNavigate();
@@ -29,19 +30,14 @@ const FilmCertainGenre: FC = () => {
   }
 
   useEffect(() => {
-    // if(!filmsGenre.every(elem=>elem.genre.some(elem=>elem ==filmsGenres)))
     dispatch(getFilmsGenre([filmsGenres], 12));
-  }, []);
+  }, [filmsGenres]);
 
   //@ts-ignore
   let images = filmsGenre.map((elem: any) => {
     return (
-      <NavLink
-        className={s.film_picture}
-        to={"/main/" + genre + "/" + elem._id}
-        key={elem._id}
-      >
-        <img src={elem.picture} alt="" />
+      <NavLink className={s.film_picture}  to={"/main/" + genre + "/" + elem._id}  key={elem._id} >
+       <Movie key={elem._id} time={elem.time}  name={elem.name}  img={elem.picture} year={elem.release} />
       </NavLink>
     );
   });
@@ -57,7 +53,7 @@ const FilmCertainGenre: FC = () => {
           className={s.FilmContent__name}
           onClick={() => router(`/main/${genre}`)}
         >
-          {filmsGenres}
+          {filmsGenre.length == 0? `Фильмов жанра ${filmsGenres} еще не добавлено на сайт....` :filmsGenres}
         </div>
         <div className={s.listOfMovies}>{images}</div>
       </div>

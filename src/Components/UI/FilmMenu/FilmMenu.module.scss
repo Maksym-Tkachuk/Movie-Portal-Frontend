@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter&family=Roboto&display=swap");
+@import "../../../source/objectStyle.scss";
+.menu {
+  width: 974px;
+  margin: 0 auto;
+  margin-top: 16px;
+  & > ul {
+    margin-bottom: 51px;
+    padding-bottom: 15px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    &::after {
+      content: "▼";
+      display: block;
+      position: absolute;
+      right: -20px;
+      top: 35%;
+      cursor: pointer;
+      transform: translate(0, -50%);
+    }
+    &:hover::after{
+      color: brown;
+    }
+    &:hover .other_item {
+      display: block;
+      transition: .5s;
+    }
+    & li {
+      cursor: pointer;
+      font-family: "Bitter", serif;
+      @include styleText(29, 29);
+      color: #ffffff;
+      &:hover {
+        color: #b11226;
+      }
+    }
+  }
+}
+
+.other_item {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 40px;
+  z-index: 2;
+  transition: .5s;
+  & ul {
+    display: grid;
+    width: 505px;
+    padding: 20px;
+    background: #ffffff;
+    border: 3px solid #b11226;
+    box-shadow: 0px 4px 4px 3px #b11226;
+    border-radius: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    & li {
+      @include styleText(24, 28);
+      font-family: "Roboto", sans-serif;
+      color: #707070;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -5,9 +5,9 @@ export interface initialFilmType {
   picture: String;
   country: String;
   time: string;
-  rating: String;
+  rating: Number;
   genre: Array<string> ;
-  release: String;
+  release: Number;
   director: String;
   cast: String;
   _id: String;
@@ -18,7 +18,7 @@ export type moviesYouLike={
         picture: string;
         time: string;
         genre: string[];
-        release: string;
+        release: Number;
 }
 
 export interface initialStateType {

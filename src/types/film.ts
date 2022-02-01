@@ -5,9 +5,9 @@ export interface initialFilmType {
   picture: String;
   country: String;
   time: string;
-  rating: String;
+  rating: Number;
   genre: Array<string> ;
-  release: String;
+  release: Number;
   director: String;
   cast: String;
   _id: String;

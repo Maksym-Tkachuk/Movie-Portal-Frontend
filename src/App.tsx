@@ -16,6 +16,7 @@ import Loader from "./Components/Elements/Loader/Loader";
 import FilmCertainGenre from "./Components/UI/FilmCertainGenre/FilmCertainGenre";
 import { getFilms } from "./Redux/filmCatalog-reducer";
 import { Geners } from "./Components/UI/UploadFilms/GenreFiled/GenreFiled";
+import FilmMenu from "./Components/UI/FilmMenu/FilmMenu";
 
 
 function App() {
@@ -38,7 +39,6 @@ function App() {
     <ModalStatus>
       <div className={s.Wrraper}>
         {!isAuth && <ModalWindow />}
-
         <Header />
 
         <div className={s.container}>

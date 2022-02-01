@@ -10,17 +10,17 @@ let initialState:initialStateType = {
     _id: "61e428a77c915e6aed5491f8",
   name: "Властелин колец: Братство кольца",
   picture:img,
-  time:0,
+  time:"0",
   genre:[""],
-  release:""
+  release:2000,
   }],
   filmsGenre:[{
     _id: "61e428a77c915e6aed5491f8",
   name: "Властелин колец: Братство кольца",
   picture:img,
-  time:0,
+  time:"0",
   genre:[""],
-  release:""
+  release:2000,
   }],
   loading: false,
 };

@@ -65,7 +65,7 @@ const FormUpload: FC<FormUploadType> = (props) => {
          initialValues = {{
             name:'',
            moving: '',
-           release:'',
+           release:0,
            description:'',
            genre:[],
            country:'',

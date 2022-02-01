@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter&family=Roboto&display=swap");
+@import "../../../source/objectStyle.scss";
+
+.SearchForm {
+  font-family: "Bitter", serif;
+  max-width: 968px;
+  margin: 0 auto;
+}
+.SearchForm__text {
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  line-height: 29px;
+  @include styleText(24, 29);
+}
+.SearchForm__block {
+  margin: 28px 0 58px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+
+  & .input {
+    position: relative;
+    width: 100%;
+    margin-right: 20px;
+    height: 62px;
+    @include styleText(44, 29);
+
+    & input {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      padding-left: 55px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      background: no-repeat url("../../../img/icon_for_search/loupe.svg");
+      height: 41px;
+      width: 41px;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 10px;
+    }
+  }
+  & .search_button {
+    width: 88px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    &:hover{
+        background-color: brown;
+    }
+    & img {
+      cursor: pointer;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+  }
+}

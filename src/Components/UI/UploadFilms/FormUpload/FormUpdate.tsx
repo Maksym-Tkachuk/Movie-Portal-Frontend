@@ -5,7 +5,6 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { message } from "antd";
 import { Input } from "antd";
-import { API_URL_IMG } from "../../../../http/api";
 import { initialValuesType } from "../UploadFilms";
 import { findFilm, removeFilm, setResult, updateFilm } from "../../../../Redux/uploadFilm-reducer";
 const { Search } = Input;
@@ -46,7 +45,7 @@ console.log(film)
     setSubmitting(false);
   };
 
-  const validate = (values: initialValuesType) => {
+  const validate = (values:initialValuesType ) => {
     const errors: any = {};
     for (let key in values) {
       //@ts-ignore
@@ -55,6 +54,9 @@ console.log(film)
       }
       if (/\D/.test(values.time)) {
         errors.time = "Только цифры!";
+      } //@ts-ignore
+      if (/\D/.test(values.release)) {
+        errors.release = "Только цифры!";
       }
     }
 

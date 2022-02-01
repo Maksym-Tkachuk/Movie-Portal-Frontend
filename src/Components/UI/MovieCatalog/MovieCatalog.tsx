@@ -1,21 +1,16 @@
-import { FC, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { FC } from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { FilmResponce } from "../../../models/response/FilmGenreResponce";
-import { getFilms } from "../../../Redux/filmCatalog-reducer";
-import Loader from "../../Elements/Loader/Loader";
-import { Geners } from "../UploadFilms/GenreFiled/GenreFiled";
+import SearchForm from "../../Elements/SearchForm/SearchForm";
 import EnterInformation from "./EnterInformation/EnterInformation";
 import FilmContent from "./FilmContent/FilmContent";
+import FilmSearch from "./FilmSearch/FilmSearch";
+
 
 const MovieCatalog: FC = () => {
-
   const { isAuth } = useTypedSelector((state) => state.auth);
-  const { films, loading } = useTypedSelector((state) => state.filmsCatalog);
-
-  
-
-
+  const { films } = useTypedSelector((state) => state.filmsCatalog);
+  const {filmSearch}= useTypedSelector(state => state.filmSearch)
   const filmFilter = (movies: Array<FilmResponce>, genre: string) => {
     return movies.filter((e) => {
       return e.genre.includes(genre);
@@ -81,26 +76,45 @@ const MovieCatalog: FC = () => {
   ];
 
   const filmDepartments = Movies.map((elem) => (
-    <FilmContent  key={elem.id} title={elem.title}  films={elem.films}   type={elem.type}/>));
-
-
+    <FilmContent key={elem.id}  title={elem.title} films={elem.films}  type={elem.type}  />
+  ));
 
   return (
     <div>
       {isAuth || <EnterInformation />}
-      {filmDepartments}
+      <SearchForm/>
+      {filmSearch.length<2? filmDepartments: <FilmSearch/>}
     </div>
   );
 };
 
 export default MovieCatalog;
 
-export let AllGeners = {
+export let AllGeners:Object = {
   Sci_Fi: "Фантастика",
   Action: "Боевик",
   Sitcoms: "Комедия",
   Romantic: "Романтика",
   Drama: "Драма",
-  Документальный: "Documental",
+  Documental: "Документальный",
   Horror: "Ужасы",
+  Biographical: "Биографический",
+  Western: "Вестерн",
+  Military: "Военный",
+  Detective: "Детектив",
+  Childrens: "Детский",
+  Historical: "Исторический",
+  MovieComic: "Кинокомикс",
+  Concert: "Концерт",
+  Short: "Короткометражный",
+  Crime: "Криминал",
+  Melodrama: "Мелодрама",
+  Mystic: "Мистика",
+  Musical: "Мюзикал",
+  Noir: "Нуар",
+  Adventure: "Приключения",
+  Family: "Семейный",
+  Fantasy: "Фэнтези",
+  Thriller: "Триллер",
+  Erotica: "Эротика",
 };
