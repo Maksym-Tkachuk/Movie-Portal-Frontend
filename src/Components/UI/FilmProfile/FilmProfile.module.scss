@@ -4,6 +4,10 @@
   margin-bottom: 31px;
   font-family: "Roboto", sans-serif;
   @include styleText(36, 42);
+  @media (max-width: 450px) {
+    @include styleText(23, 35);
+    margin-bottom: 0px;
+  }
   & span {
     color: white;
     cursor: pointer;
@@ -22,5 +26,8 @@
 .content{
     display: flex;
     justify-content: space-between;
+    @media (max-width:1100px) {
+      flex-direction: column;
+    }
 }
 

@@ -29,13 +29,13 @@ const MovieComponent: FC<FilmProfileType> = ({movie}) => {
         controls
         url={movie}
       />
-      <div className={style.control_block}>
+      {/* <div className={style.control_block}>
         <ControlPanel img={tv_button} title="VidCloud" />
         <ControlPanel img={play_button} title="HDRip" />
         <ControlPanel img={play_button} title="Videovard" />
         <ControlPanel img={play_button} title="Dosteam" />
         <ControlPanel img={play_button} title="Vidstem" />
-      </div>
+      </div> */}
     </div>
   );
 };

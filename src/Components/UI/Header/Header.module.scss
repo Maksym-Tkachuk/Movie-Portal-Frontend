@@ -5,6 +5,7 @@
   background: #b11226;
   padding: 8px 0px;
 }
+
 .header__inner {
   display: flex;
   max-width: 1408px;
@@ -12,6 +13,9 @@
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+  @media (max-width:500px) {
+    flex-direction: column;
+  }
   .header__siteLogo {
     font-family: "Ranchers", cursive;
     @include styleText(24, 30);

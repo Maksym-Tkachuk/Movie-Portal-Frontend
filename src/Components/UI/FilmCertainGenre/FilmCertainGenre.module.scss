@@ -9,21 +9,33 @@
   @include styleText(48, 58);
   margin-bottom: 24px;
   cursor: pointer;
+  @media (max-width: 450px) {
+    @include styleText(35, 58);
+  }
 }
 .listOfMovies {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11.06rem, 1fr));
   grid-column-gap: 50px;
   justify-items: center;
+  @media (max-width: 450px) {
+  grid-template-columns: repeat(auto-fit, minmax(7.06rem, 1fr));
 }
-.film_picture{
-  width: 177px;
-  & div{
-    width: 100%;
-  }
-  & img{
-    width: 100%;
-    height: 255px;
-  }
 }
 
+.film_picture {
+  width: 177px;
+  @media (max-width: 450px) {
+    width: 145px;
+  }
+  & div {
+    width: 100%;
+  }
+  & img {
+    width: 100%;
+    height: 255px;
+    @media (max-width: 450px) {
+      height: 200px;
+    }
+  }
+}

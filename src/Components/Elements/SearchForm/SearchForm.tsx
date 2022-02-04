@@ -14,14 +14,13 @@ const SearchForm: FC = () => {
   const dispatch = useDispatch();
   const urlParams = useLocation();
 
-  console.log(urlParams)
+
   function searchChangeHandler(e: any) {
     setValue(e.target.value);
     if (searchTimeout != false) {
       clearTimeout(searchTimeout);
     }
     dispatch(setLoading(true));
-
     if (e.target.value != "") {
       setSearchTimeout(
         setTimeout(

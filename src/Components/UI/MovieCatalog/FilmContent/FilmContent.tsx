@@ -44,12 +44,6 @@ const FilmContent = (props: FilmContentType) => {
           slidesToShow: 2,
         },
       },
-      {
-        breakpoint: 450,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
     ],
   };
 

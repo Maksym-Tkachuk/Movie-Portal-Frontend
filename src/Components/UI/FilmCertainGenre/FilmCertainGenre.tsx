@@ -53,7 +53,7 @@ const FilmCertainGenre: FC = () => {
           className={s.FilmContent__name}
           onClick={() => router(`/main/${genre}`)}
         >
-          {filmsGenre.length == 0? `Фильмов жанра ${filmsGenres} еще не добавлено на сайт....` :filmsGenres}
+          {filmsGenre.length == 0 && !loading? `Фильмов жанра ${filmsGenres} еще не добавлено на сайт....` :filmsGenres}
         </div>
         <div className={s.listOfMovies}>{images}</div>
       </div>

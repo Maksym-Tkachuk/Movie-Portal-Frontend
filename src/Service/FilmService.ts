@@ -1,3 +1,4 @@
+
 import { FilmResponce } from './../models/response/FilmGenreResponce';
 import axios, { AxiosResponse } from "axios";
 import $api, { API_URL } from "../http/api";
@@ -24,6 +25,9 @@ export default class FilemService {
   }
   static async updateFilm(formData: Object): Promise<any> {
     return $api.put("/film", formData);
+  }
+  static async updateRating(id:String,rating:number | undefined): Promise<AxiosResponse<number>> {
+    return $api.put("/film/rating", {_id:id,rating});
   }
   static async deleteFilm(name:string): Promise<any> {
     return $api.delete("/film/" + name);

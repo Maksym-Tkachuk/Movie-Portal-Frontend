@@ -4,12 +4,15 @@
 .footer {
   padding: 50px 41px;
   font-family: "Bitter", serif;
- 
-  justify-content: space-between;
-  align-items: center;
   &>div{
     display: flex;
+    max-width: 1408px;
+    margin: 0 auto;
+    align-items: center;
     justify-content: space-between;
+    @media (max-width:520px) {
+      flex-direction: column;
+    }
   }
 }
 .nameLink,
@@ -21,7 +24,14 @@
   max-width: 300px;
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(7.25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8.25rem, 1fr));
+  margin-right: 10px;
+  @media (max-width:520px) {
+    margin-right: 0px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    grid-template-columns: repeat(2, 1fr);
+  }
   & > a {
     @include styleText(18, 18);
     color: #b7b7b7;

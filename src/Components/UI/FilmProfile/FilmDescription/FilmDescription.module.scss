@@ -15,13 +15,26 @@ $color: #201f1f;
   background: $color;
   font-family: "Roboto", sans-serif;
   max-width: 857px;
-  padding: 77px 29px 78px 39px;
+  padding: 77px 29px 78px 77px;
   display: flex;
   margin-bottom: 30px;
+  margin-right: 20px;
+  @media (max-width: 1100px) {
+    max-width: 100%;
+    margin-right: 0px;
+  }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 22px 30px 22px;
+  }
   & > img {
     width: 262px;
     height: 387px;
     margin-right: 28px;
+    @media (max-width: 550px) {
+    margin-right: 0;
+    }
   }
   & .film_description {
     & > div {
@@ -42,6 +55,11 @@ $color: #201f1f;
     display: flex;
     align-items: center;
     margin-left: -5px;
+    @media (max-width: 450px) {
+    flex-wrap: wrap;
+    justify-content: center;
+      }
+    
     & > span {
       margin-right: 15px;
     }
@@ -62,12 +80,23 @@ $color: #201f1f;
 
 .additional_information {
   max-width: 40.75rem;
-  padding: 19px 42px;
+  padding: 19px 22px;
   background: $color;
+  margin-bottom: 30px;
+  @media (max-width: 1100px) {
+    max-width: 100%;
+  }
+
   & .county_name {
     @include styleText(36, 42);
     font-weight: bold;
     margin-bottom: 45px;
+    @media (max-width: 540px) {
+      @include styleText(25, 35);
+    }
+    @media (max-width: 450px) {
+    margin-bottom: 20px;
+    }
     & span {
       margin-right: 12px;
     }
@@ -76,10 +105,28 @@ $color: #201f1f;
     display: flex;
     justify-content: space-between;
     @include styleText(30, 35);
+    @media (max-width: 650px) {
+      @include styleText(25, 35);
+    }
+    @media (max-width: 540px) {
+      @include styleText(20, 25);
+    }
     & .decription_fileds {
       margin-left: 30px;
       max-width: 370px;
       color: grey;
+      @media (max-width: 1100px) {
+        max-width: 500px;
+      }
+      @media (max-width: 800px) {
+        max-width: 340px;
+        margin-left: 10px;
+      }
+      @media (max-width: 400px) {
+        max-width: 210px;
+        
+      }
+  
       & p {
         white-space: nowrap;
         overflow: hidden;

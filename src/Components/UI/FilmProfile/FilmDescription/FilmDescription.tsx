@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import style from "./FilmDescription.module.scss";
 import { Rate } from "antd";
 import qualityFilm from "../../../../img/icon_for_film/hd.png";
 import CountryFlags from "./CountryFlags";
 import { initialFilmType } from "../../../../types/film";
+import { useDispatch } from "react-redux";
+import { updateRating } from "../../../../Redux/filmProfile-reducer";
 
 
 
@@ -11,9 +13,14 @@ import { initialFilmType } from "../../../../types/film";
 
 const FilmDescription: FC<initialFilmType> = (props) => {
 
+const [rating,setRating] = useState<number>()
+const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(updateRating(props._id,rating))
+  },[rating])
 
 
-  
+
   return (
     <div className={style.all_infoemation}>
       <div className={style.description}>
@@ -25,7 +32,7 @@ const FilmDescription: FC<initialFilmType> = (props) => {
               <img src={qualityFilm} alt="" />
             </span>
             <span className={style.rating}>
-              <Rate onChange={(e) => console.log(e)} />
+              <Rate allowHalf defaultValue={props.rating} onChange={(e) => setRating(e)} />
               <span>{props.rating}</span>
             </span>
             <span>{props.time} минут</span>

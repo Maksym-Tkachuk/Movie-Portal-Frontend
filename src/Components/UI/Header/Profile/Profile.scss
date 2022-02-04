@@ -1,0 +1,23 @@
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  padding: 0px !important;
+  border-radius: 0% !important;
+}
+
+.css-azeo8y-MuiAvatar-root {
+  border-radius: 0% !important;
+  width: 50px !important;
+  height: 50px !important;
+
+  & > img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+.css-i4bv87-MuiSvgIcon-root {
+  margin-right: 0px !important;
+}
+@media (max-width: 700px) {
+  .AddToPhotosIcon {
+    display: none !important;
+  }
+}

@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+
 import { useDispatch, useSelector } from "react-redux";
 import { userAvatar } from "../../../../Redux/profile-reducer";
 import { AppStateType } from "../../../../Redux/store";
@@ -10,8 +10,8 @@ import { useNavigate } from "react-router";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { FC } from "react";
 import { logout } from "../../../../Redux/auth-reducer";
-import { getBase64 } from "../../UploadFilms/UploadFile/UploadFile";
 import Loader from "../../../Elements/Loader/Loader";
+import ProfileMenu from "./ProfileMenu";
 
 
 const Profile: FC = () => {
@@ -19,21 +19,24 @@ const Profile: FC = () => {
   const router = useNavigate();
   const { admin, userName } = useSelector( (state: AppStateType) => state.auth.user);
   const profile = useTypedSelector(state=>state.profile)
-  const { errorRegistration } = useTypedSelector((state) => state.auth);
+  const { isLoading } = useTypedSelector((state) => state.auth);
 
   const fileUploadHandler = async (event: any) => {
-    const file: any = await getBase64(event.target.files[0]);
     dispatch(userAvatar(event.target.files[0]))
   };
 
+  if(isLoading){
+   return  <Loader/>
+  }
 
   return (
     <div className={style.profile}>
       {admin && (
-        <AddToPhotosIcon
+        <div className="AddToPhotosIcon"><AddToPhotosIcon
+        className={style.iconUpdate}
           onClick={() => router("/Changes-Films")}
           style={{ marginRight: "20px", cursor: "pointer" }}
-        />
+        /></div>
       )}
       <div className={style.profile__userName}>{userName}</div>
       <div className={style.profile__avatar}>
@@ -45,18 +48,15 @@ const Profile: FC = () => {
             }}
             className={style.download}
             type="file"
-          />
-{  errorRegistration?<Loader/>: <img
+          /> 
+          <img
             src={profile.userAvatar ? profile.userAvatar : avatar}
             alt="avatar"
-          />}
+          />
+          <ProfileMenu />
         </div>
       </div>
-      <div
-        onClick={() => {
-          dispatch(logout());
-        }}
-      >
+      <div onClick={() =>dispatch(logout())} className={style.buttonProfile}>
         <ButtonSquare text="logout" />
       </div>
     </div>

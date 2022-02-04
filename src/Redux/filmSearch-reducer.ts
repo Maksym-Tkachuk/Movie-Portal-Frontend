@@ -51,7 +51,6 @@ export const getFilmSearch =
     try {
       dispatch(setLoading(true));
       const response = await FilemService.getFilmSearch(name);
-      console.log(response.data);
       dispatch(setFilmSearch(response.data));
     } catch (e: any) {
       console.log(e);

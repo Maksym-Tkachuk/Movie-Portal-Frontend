@@ -5,7 +5,7 @@ export interface initialFilmType {
   picture: String;
   country: String;
   time: string;
-  rating: Number;
+  rating: number;
   genre: Array<string> ;
   release: Number;
   director: String;
@@ -31,7 +31,8 @@ export interface initialStateType {
 export enum actionType {
   SET_LOADING_PROFILE_FILM = "SET-LOADING-PROFILE-FILM",
   SET_PROFILE_FILM = "SET-PROFILE-FILM",
-  SET_MOVIES_YOU_LIKE="SET-MOVIES-YOU-LIKE"
+  SET_MOVIES_YOU_LIKE="SET-MOVIES-YOU-LIKE",
+  SET_MOVIE_RATING="SET-MOVIE-RATING"
 }
 
 export interface SetInformationAboutFilm {
@@ -48,4 +49,9 @@ export interface SetLoading {
   payload: boolean;
 }
 
-export type filmActionType = SetInformationAboutFilm | SetLoading | SetMoviesYouLike; 
+export interface SetMovieRating {
+  type: actionType.SET_MOVIE_RATING;
+  payload: number;
+}
+
+export type filmActionType = SetInformationAboutFilm | SetLoading | SetMoviesYouLike | SetMovieRating; 

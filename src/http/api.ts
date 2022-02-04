@@ -3,7 +3,7 @@ import { AuthResponse } from "../models/response/AuthResponse";
 
 export const API_URL = "https://movie-portal-backend.herokuapp.com/api";
 
-export const API_URL_IMG = "http://localhost:5000"
+export const API_URL_IMG = "https://movie-portal-backend.herokuapp.com"
 
 const $api = axios.create({
   withCredentials: true,

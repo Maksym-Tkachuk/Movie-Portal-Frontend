@@ -1,12 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Ranchers&display=swap");
 @import "../../../../source/objectStyle.scss";
 
+
+@mixin updateScreen {
+  @media (max-width:700px) {
+    display: none;
+  }
+}
+
 .profile {
   display: flex;
   align-items: center;
-  & > div:not(:last-child) {
+  & > div:not(:last-of-type) {
     margin-right: 25px;
   }
+  
 }
 .profile__userName {
   @include styleText(20, 30);
@@ -17,9 +25,13 @@
 .profile__avatar {
   position: relative;
   cursor: pointer;
-  & .avatar img {
+  @media (max-width:700px) {
+    margin-right: 0px !important;
+  }
+  & .avatar > img {
     width: 50px;
     height: 50px;
+    @include updateScreen;
   }
   & .avatar:hover img {
     transition: 0.5s;
@@ -31,5 +43,21 @@
     height: 50px;
     opacity: 0;
     cursor: pointer;
+    @include updateScreen;
   }
+}
+
+.downloadWindow{
+  position: absolute;
+  opacity: 0;
+}
+.profileMenu{
+  display: none;
+  @media (max-width:700px) {
+    display: block;
+    padding: 0;
+  }
+}
+.buttonProfile{
+  @include updateScreen;
 }

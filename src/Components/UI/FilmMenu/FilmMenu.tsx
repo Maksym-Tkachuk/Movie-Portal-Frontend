@@ -33,9 +33,10 @@ const otherGenreMenu = otherGenre.map((elem,index)=>{
         <nav className={style.menu}>
           <ul className={style.menu_items}>
               {menu}
+              <li className={style.genres}>ЖАНРЫ</li>
               <li className={style.other_item}> 
                   <ul>
-                      {   otherGenreMenu} 
+                      {otherGenreMenu} 
                   </ul>
               </li>
           </ul>

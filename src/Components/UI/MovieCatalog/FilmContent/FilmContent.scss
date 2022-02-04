@@ -5,6 +5,9 @@
   z-index: 2 !important;
 }
 
+.slick-next {
+  content: "ᐳ" !important;
+}
 .slick-next:before {
   content: "ᐳ" !important;
 }
@@ -20,3 +23,12 @@
 .slick-prev, .slick-next {
   top: 35% !important;
 }
+
+@media (max-width: 400px) {
+  .slick-next {
+    right: -10px !important;
+  }
+  .slick-prev {
+    left: -10px !important;
+  }
+ }

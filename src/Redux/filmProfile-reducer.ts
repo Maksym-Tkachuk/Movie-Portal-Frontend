@@ -1,8 +1,16 @@
+import { SetMovieRating } from "./../types/profileFilm";
 import { Dispatch } from "redux";
 import FilemService from "../Service/FilmService";
-import { actionType, filmActionType, initialFilmType, initialStateType, moviesYouLike, SetInformationAboutFilm, SetLoading, SetMoviesYouLike } from "../types/profileFilm";
-
-
+import {
+  actionType,
+  filmActionType,
+  initialFilmType,
+  initialStateType,
+  moviesYouLike,
+  SetInformationAboutFilm,
+  SetLoading,
+  SetMoviesYouLike,
+} from "../types/profileFilm";
 
 let initialState: initialStateType = {
   film: {
@@ -20,17 +28,18 @@ let initialState: initialStateType = {
     cast: "",
   },
   loading: false,
-  loadingFilmsLike:false,
-  moviesYouLike:[{
-    _id:"",
-    genre:[""],
-    name:"",
-    picture:"",
-    release:0,
-    time:""
-  }]
+  loadingFilmsLike: false,
+  moviesYouLike: [
+    {
+      _id: "",
+      genre: [""],
+      name: "",
+      picture: "",
+      release: 0,
+      time: "",
+    },
+  ],
 };
-
 
 const filmProfileReducer = (
   state = initialState,
@@ -47,11 +56,19 @@ const filmProfileReducer = (
         ...state,
         loading: action.payload,
       };
-      case actionType.SET_MOVIES_YOU_LIKE:
-        return {
-          ...state,
-          moviesYouLike: [...action.payload],
-        };
+    case actionType.SET_MOVIES_YOU_LIKE:
+      return {
+        ...state,
+        moviesYouLike: [...action.payload],
+      };
+    case actionType.SET_MOVIE_RATING:
+      return {
+        ...state,
+        film: {
+          ...state.film,
+          rating: action.payload,
+        },
+      };
     default:
       return state;
   }
@@ -61,7 +78,9 @@ export const setFilm = (film: initialFilmType): SetInformationAboutFilm => ({
   type: actionType.SET_PROFILE_FILM,
   payload: { ...film },
 });
-export const setMoviesYouLike = (films:Array<moviesYouLike> ): SetMoviesYouLike => ({
+export const setMoviesYouLike = (
+  films: Array<moviesYouLike>
+): SetMoviesYouLike => ({
   type: actionType.SET_MOVIES_YOU_LIKE,
   payload: films,
 });
@@ -74,10 +93,13 @@ export const setLoadingFilmsLike = (value: boolean): SetLoading => ({
   payload: value,
 });
 
+export const setRating = (value: number): SetMovieRating => ({
+  type: actionType.SET_MOVIE_RATING,
+  payload: value,
+});
 
-
-
-export const findFilById = (id: string | undefined) => async (dispatch: Dispatch<filmActionType>) => {
+export const findFilById =
+  (id: string | undefined) => async (dispatch: Dispatch<filmActionType>) => {
     try {
       dispatch(setLoading(true));
       const response = await FilemService.findFilmById(id);
@@ -89,16 +111,29 @@ export const findFilById = (id: string | undefined) => async (dispatch: Dispatch
     }
   };
 
-  export const getMoviesLike = (geners:Array<string>,limit:number) => async (dispatch: Dispatch<filmActionType>) => {
+export const getMoviesLike =
+  (geners: Array<string>, limit: number) =>
+  async (dispatch: Dispatch<filmActionType>) => {
     try {
       dispatch(setLoadingFilmsLike(true));
-      const response = await FilemService.getFilmGenre(geners,limit);
+      const response = await FilemService.getFilmGenre(geners, limit);
       //@ts-ignore
       dispatch(setMoviesYouLike(response.data));
     } catch (e: any) {
       console.log(e.response?.data?.message);
     } finally {
       dispatch(setLoadingFilmsLike(false));
+    }
+  };
+
+export const updateRating =(id: String, rating: number | undefined) =>
+  async (dispatch: Dispatch<filmActionType>) => {
+    try {
+      const response = await FilemService.updateRating(id, rating);
+      console.log(response.data)
+      dispatch(setRating(response.data));
+    } catch (e: any) {
+      console.log(e.response?.data?.message);
     }
   };
 
