@@ -7,9 +7,15 @@ $width: 438px;
   flex-direction: column;
   align-items: center;
   margin-top: 67px;
+  @media (max-width:450px) {
+    margin-top: 30px;
+    align-items: unset;
+  }
   & > button {
     background-color: #fff;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }
   & > div {
     width: $width;

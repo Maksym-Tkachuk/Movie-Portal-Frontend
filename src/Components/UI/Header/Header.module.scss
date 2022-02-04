@@ -13,8 +13,9 @@
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     flex-direction: column;
+    padding: 0px;
   }
   .header__siteLogo {
     font-family: "Ranchers", cursive;
@@ -25,8 +26,13 @@
   }
 }
 
-.header__registration > span:first-child {
-  margin-right: 25px;
+.header__registration {
+  @media (max-width: 500px) {
+    margin-top: 10px;
+  }
+  & > span:first-child {
+    margin-right: 25px;
+  }
 }
 
 .icon svg {

@@ -110,7 +110,7 @@ export let AllGeners:Object = {
   Crime: "Криминал",
   Melodrama: "Мелодрама",
   Mystic: "Мистика",
-  Musical: "Мюзикал",
+  Musical: "Мюзикл",
   Noir: "Нуар",
   Adventure: "Приключения",
   Family: "Семейный",
