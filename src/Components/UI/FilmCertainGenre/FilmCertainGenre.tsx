@@ -37,7 +37,7 @@ let filmCountScip = filmsGenre.length
 useEffect(() => {
   dispatch(setFilmsGenre([]));
   dispatch(setLoadingNewFilm(false));
-}, [filmsGenres]);
+}, [genre]);
 
   useObserver(lastElement,loading,loadingNewFilm, ()=>{dispatch(addFilmsGenre([filmsGenres], 12, filmCountScip))})
 
