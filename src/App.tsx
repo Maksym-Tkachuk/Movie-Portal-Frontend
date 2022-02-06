@@ -11,11 +11,10 @@ import { useTypedSelector } from "./hooks/useTypedSelector";
 import FilmProfile from "./Components/UI/FilmProfile/FilmProfile";
 import { ModalStatus } from "./Components/Elements/Modal/ModalContext";
 import Loader from "./Components/Elements/Loader/Loader";
+
+import FilmCertainGenre from "./Components/UI/FilmCertainGenre/FilmCertainGenre"
 const MovieCatalog = lazy(
   () => import("./Components/UI/MovieCatalog/MovieCatalog")
-);
-const FilmCertainGenre = lazy(
-  () => import("./Components/UI/FilmCertainGenre/FilmCertainGenre")
 );
 
 function App() {
