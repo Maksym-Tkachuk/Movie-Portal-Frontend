@@ -22,7 +22,7 @@ $width: 438px;
     margin: 0;
     margin-bottom: 20px;
     @media (max-width:500px) {
-        max-width: $width;
+        max-width: 100%;
     }
 
     & * {

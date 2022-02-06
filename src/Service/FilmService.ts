@@ -8,8 +8,8 @@ export default class FilemService {
   static async addFilm(formData: Object): Promise<any> {
     return $api.post("/film", formData);
   }
-  static async getFilmGenre(genre:Array<string>,limit:number): Promise<AxiosResponse<Array<FilmResponce>>> {
-    return $api.post(`/film/genre`, {genre:genre,limit:limit});
+  static async getFilmGenre(genre:Array<string>,limit:number,skipFilm:number): Promise<AxiosResponse<Array<FilmResponce>>> {
+    return $api.post(`/film/genre`, {genre:genre,limit:limit,skipFilm:skipFilm});
   }
   static async getFilmSearch(name:string): Promise<AxiosResponse<Array<FilmResponce>>> {
     return $api.post(`/films/search`, {name});

@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import { useNavigate } from "react-router"
 import { AllGeners } from "../MovieCatalog/MovieCatalog"
 import style from "./FilmMenu.module.scss"
@@ -6,6 +6,7 @@ import style from "./FilmMenu.module.scss"
 
 const FilmMenu:FC = ()=>{
     const navigation = useNavigate()
+    const [modalWindow, setModalWindow] = useState<boolean>(false)
 
 let menu_item:Array<{key:string,title:string,url:string}> = [
     { key:"1", title:"Главная", url:"/main"},
@@ -15,7 +16,6 @@ let menu_item:Array<{key:string,title:string,url:string}> = [
     { key:"5", title:"Романтика", url:"/main/Romantic"},
     { key:"6", title:"Драма", url:"/main/Drama"},
 ]
-    
 const menu = menu_item.map(elem=><li key={elem.key} onClick={()=>navigation(elem.url)}>{elem.title}</li>)
 
 let otherGenre:Array<{title:string,type:string}> = []
@@ -25,7 +25,12 @@ for(let elem in AllGeners){
     otherGenre=[...otherGenre,{title:AllGeners[elem],type:elem}]
 }
 const otherGenreMenu = otherGenre.map((elem,index)=>{
-    return <li key={index} onClick={()=>navigation(`main/${elem.type}`)}>{elem.title}</li>
+    return <li key={index} 
+    onClick={()=>{
+    navigation(`main/${elem.type}`)
+    setModalWindow(true)
+    setTimeout(()=>setModalWindow(false),200) }
+}>{elem.title}</li>
 })
 
 
@@ -34,11 +39,11 @@ const otherGenreMenu = otherGenre.map((elem,index)=>{
           <ul className={style.menu_items}>
               {menu}
               <li className={style.genres}>ЖАНРЫ</li>
-              <li className={style.other_item}> 
-                  <ul>
+            {modalWindow || <li className={style.other_item}> 
+                  <ul >
                       {otherGenreMenu} 
                   </ul>
-              </li>
+              </li>}  
           </ul>
         </nav>
     )

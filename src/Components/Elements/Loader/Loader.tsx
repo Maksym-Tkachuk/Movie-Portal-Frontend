@@ -3,9 +3,9 @@ import { FC } from "react";
 import style from "./Loader.module.scss"
 
 
-const Loader: FC = () => {
+const Loader:FC<{value?:boolean}> = (props) => {
   return (
-    <div className={style.progress}>
+    <div className={`${props.value ? style.secondFormat:style.progress}`}>
       <CircularProgress disableShrink  color="secondary" />
     </div>
   );

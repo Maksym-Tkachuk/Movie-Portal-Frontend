@@ -25,7 +25,7 @@ const FilmProfile: FC<FilmProfileType> = (props) => {
   const { loading, film} = useTypedSelector((state) => state.filmProfile);
 
   useEffect(() => {
-    dispatch(getMoviesLike(film.genre, 6));
+    dispatch(getMoviesLike(film.genre, 6,0));
   }, [film.genre]);
 
   let filmsGenres = "";

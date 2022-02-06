@@ -112,11 +112,11 @@ export const findFilById =
   };
 
 export const getMoviesLike =
-  (geners: Array<string>, limit: number) =>
+  (geners: Array<string>, limit: number,skipFilm:number) =>
   async (dispatch: Dispatch<filmActionType>) => {
     try {
       dispatch(setLoadingFilmsLike(true));
-      const response = await FilemService.getFilmGenre(geners, limit);
+      const response = await FilemService.getFilmGenre(geners, limit,skipFilm);
       //@ts-ignore
       dispatch(setMoviesYouLike(response.data));
     } catch (e: any) {

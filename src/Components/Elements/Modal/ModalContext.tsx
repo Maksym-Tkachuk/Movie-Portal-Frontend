@@ -1,5 +1,4 @@
 import React, { FC, ReactText, useContext, useState } from "react";
-import { Props } from "react";
 
 type ModalWindowType = {
     active:boolean
