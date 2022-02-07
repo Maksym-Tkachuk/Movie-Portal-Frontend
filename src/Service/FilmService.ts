@@ -18,7 +18,7 @@ export default class FilemService {
     return $api.get("/films");
   }
   static async findFilm(name: string): Promise<AxiosResponse<initialFilmType>> {
-    return $api.get("/film/" + name);
+    return $api.put("/film", {name});
   }
   static async findFilmById(id: string | undefined): Promise<AxiosResponse<initialFilmType>> {
     return $api.get("/profileFilm/" + id);

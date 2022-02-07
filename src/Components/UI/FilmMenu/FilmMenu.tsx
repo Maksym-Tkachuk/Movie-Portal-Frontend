@@ -8,6 +8,8 @@ const FilmMenu:FC = ()=>{
     const navigation = useNavigate()
     const [modalWindow, setModalWindow] = useState<boolean>(false)
 
+let timer:any;
+
 let menu_item:Array<{key:string,title:string,url:string}> = [
     { key:"1", title:"Главная", url:"/main"},
     { key:"2", title:"Фантастика", url:"/main/Sci_Fi"},
@@ -25,11 +27,12 @@ for(let elem in AllGeners){
     otherGenre=[...otherGenre,{title:AllGeners[elem],type:elem}]
 }
 const otherGenreMenu = otherGenre.map((elem,index)=>{
+    clearTimeout(timer)
     return <li key={index} 
     onClick={()=>{
     navigation(`main/${elem.type}`)
     setModalWindow(true)
-    setTimeout(()=>setModalWindow(false),200) }
+    timer =  setTimeout(()=>setModalWindow(false),500) }
 }>{elem.title}</li>
 })
 

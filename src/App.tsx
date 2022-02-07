@@ -16,7 +16,7 @@ import { Navigate, useNavigate } from "react-router";
 function App() {
   let dispatch = useDispatch();
   const { isLoading, isAuth } = useTypedSelector((state) => state.auth);
-  let navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(chekAuth());

@@ -4,7 +4,7 @@ import { useEffect, useRef} from "react";
 
 
 
-export const useObserver = (ref:any,isLoading:boolean,endFilm:boolean, callback:any) => {
+export const useObserver = (ref:any,isLoading:boolean,endFilm:boolean,change:string, callback:any) => {
     const observer:any = useRef();
 
     useEffect(() => {
@@ -18,5 +18,5 @@ export const useObserver = (ref:any,isLoading:boolean,endFilm:boolean, callback:
         };
         observer.current = new IntersectionObserver(cb);
         observer.current.observe(ref.current)
-    }, [isLoading,endFilm])
+    }, [isLoading,endFilm,change])
 }

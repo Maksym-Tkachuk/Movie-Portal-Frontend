@@ -45,6 +45,7 @@ const SearchForm: FC = () => {
       <div className={s.SearchForm__block}>
         <div className={s.input}>
           <input
+          autoComplete="off"
             type="text"
             name="search"
             id=""

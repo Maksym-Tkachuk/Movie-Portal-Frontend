@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { AllGeners } from '../MovieCatalog/MovieCatalog';
 
 import style from './Footer.module.scss';
 
@@ -11,17 +12,7 @@ const Footer = (props) => {
                     Links
                 </div>
                 <div className={style.listLinks}>
-                    <NavLink to='/main/Movies'>Movies</NavLink>
-                    <NavLink to='/main/TVSeries'>TV Series</NavLink>
-                    <NavLink to='/main/ShortFilms'>ShortFilms</NavLink>
-                    <NavLink to='/main/MostWatched'>Most Watched</NavLink>
-                    <NavLink to='/main/TopIMdb'>Top IMdb</NavLink>
-                    <NavLink to='/main/F2Movies'>F2 Movies</NavLink>
-                    <NavLink to='/main/Action'>Action</NavLink>
-                    <NavLink to='/main/Horror'>Horror</NavLink>
-                    <NavLink to='/main/SciFi'>Sci - Fi</NavLink>
-                    <NavLink to='/main/KDrama'>K Drama</NavLink>
-                    <NavLink to='/main/Romantic'>Romantic</NavLink>
+                { Object.entries(AllGeners).map((el,index)=>{if(index<10)return<NavLink key={`${index}`} to={`/main/${el[0]}`}>{el[1]}</NavLink>})    }
                 </div>
             </div>
             <div className={style.footer__description}>

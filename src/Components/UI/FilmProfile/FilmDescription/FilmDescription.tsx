@@ -1,11 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import style from "./FilmDescription.module.scss";
-import { Rate } from "antd";
+import { message, Rate } from "antd";
 import qualityFilm from "../../../../img/icon_for_film/hd.png";
 import CountryFlags from "./CountryFlags";
 import { initialFilmType } from "../../../../types/film";
 import { useDispatch } from "react-redux";
 import { updateRating } from "../../../../Redux/filmProfile-reducer";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 
 
 
@@ -14,9 +15,20 @@ import { updateRating } from "../../../../Redux/filmProfile-reducer";
 const FilmDescription: FC<initialFilmType> = (props) => {
 
 const [rating,setRating] = useState<number>()
+const {isAuth} = useTypedSelector(state=>state.auth)
 const dispatch = useDispatch()
+
+const putRating = ()=>{
+  if(!isAuth){
+    const key = "updatable";
+    message.error({ content: "Что б указать рейтинг, войдите в свой акаунт!", key, duration: 3 });
+  }
+}
+
   useEffect(()=>{
-    dispatch(updateRating(props._id,rating))
+    if(isAuth && rating){
+        dispatch(updateRating(props._id,rating))
+    }
   },[rating])
 
 
@@ -32,7 +44,7 @@ const dispatch = useDispatch()
               <img src={qualityFilm} alt="" />
             </span>
             <span className={style.rating}>
-              <Rate allowHalf defaultValue={props.rating} onChange={(e) => setRating(e)} />
+            <span onClick={()=>putRating()}> <Rate allowHalf defaultValue={props.rating}  onChange={(e) => setRating(e)} /></span> 
               <span>{props.rating}</span>
             </span>
             <span>{props.time} минут</span>

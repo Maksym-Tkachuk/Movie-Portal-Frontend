@@ -20,7 +20,7 @@ const MoviesYouLike: FC<MoviesYouLike> = (props) => {
   const Movies = moviesYouLike.map(
     (elem: { time: string; name: string;picture: string; release: Number;_id: string;}) => {
       return (
-        <div key={elem._id}  onClick={() => navigate(`/main/${params.genre}/${elem._id}`)} >
+        <div key={`${elem._id}`}  onClick={() => navigate(`/main/${params.genre}/${elem._id}`)} >
           <Movie time={elem.time} name={elem.name}  img={elem.picture}  year={elem.release}/>
         </div>);
     }

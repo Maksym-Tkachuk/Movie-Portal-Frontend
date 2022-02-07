@@ -15,7 +15,7 @@ const [checkMovies,setcheckMovies] = useState<Array<number>>([])
 
   const { isAuth } = useTypedSelector((state) => state.auth);
   const { films,loadingCatalogFilm } = useTypedSelector((state) => state.filmsCatalog);
-  const { filmSearch } = useTypedSelector((state) => state.filmSearch);
+  const { filmSearch,loading } = useTypedSelector((state) => state.filmSearch);
   const dispatch = useDispatch();
 
   const lastElement:any = useRef();
@@ -62,9 +62,8 @@ useEffect(() => {
     observer.current.observe(lastElement.current)
 }, [loadingCatalogFilm])
   const filmDepartments = Movie.map((elem) =>{
-
         if(checkMovies.some((el)=>el == elem.id && elem.films.length >=7)){
-          return (<FilmContent key={elem.id} title={elem.title}films={elem.films}type={elem.type} />)}
+          return (<FilmContent key={`${elem.id}`} title={elem.title}films={elem.films}type={elem.type} />)}
   }
   );
 
@@ -73,8 +72,7 @@ useEffect(() => {
       {isAuth || <EnterInformation />}
       <SearchForm />
       {filmSearch.length == 0 ? filmDepartments : <FilmSearch />}
-      {/* {loadingCatalogFilm &&  <Loader value={true} />} */}
-  
+      {(loadingCatalogFilm || loading) &&  <Loader value={true} />}
       <div ref={lastElement} style={{ height: "5px" }}></div>
     </div>
   );

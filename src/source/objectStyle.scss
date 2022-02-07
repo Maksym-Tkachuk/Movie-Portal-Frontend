@@ -1,6 +1,6 @@
 @mixin styleText($fz, $lh) {
-  font-size: ($fz/16) + rem;
-  line-height: ($lh/16) + rem;
+  font-size: ($fz/16) + rem !important;
+  line-height: ($lh/16) + rem !important;
 }
 @mixin transformationInRem($px) {
   $rem: ($px/16) + rem;

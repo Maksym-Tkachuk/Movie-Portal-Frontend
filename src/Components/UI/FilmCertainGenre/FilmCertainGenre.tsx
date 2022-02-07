@@ -18,7 +18,7 @@ const FilmCertainGenre: FC = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const genre = params.genre;
+  const genre = params.genre || "";
   const { filmsGenre, loading,loadingNewFilm } = useTypedSelector( (state) => state.filmsCatalog);
   const lastElement:any= useRef()
   let filmsGenres = "";
@@ -35,11 +35,12 @@ let filmCountScip = filmsGenre.length
     
 
 useEffect(() => {
-  dispatch(setFilmsGenre([]));
+  dispatch(setFilmsGenre([...[]]));
   dispatch(setLoadingNewFilm(false));
+  filmCountScip = 0
 }, [genre]);
 
- useObserver(lastElement,loading,loadingNewFilm, ()=>{dispatch(addFilmsGenre([filmsGenres], 12, filmCountScip))})
+ useObserver(lastElement,loading,loadingNewFilm,genre, ()=>{dispatch(addFilmsGenre([filmsGenres], 12, filmCountScip))})
 
 
   //@ts-ignore

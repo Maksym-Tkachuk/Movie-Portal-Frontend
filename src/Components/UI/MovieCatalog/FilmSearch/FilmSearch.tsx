@@ -31,9 +31,6 @@ const {filmSearch,loading} = useTypedSelector(state=>state.filmSearch)
         );
       });
 
-      if(loading){
-          return <Loader/>
-      }
 
   return (
     <section className={s.filmSearch}>
