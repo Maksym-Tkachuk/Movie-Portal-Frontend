@@ -7,7 +7,7 @@ import React, { FC, memo, RefObject, useEffect, useRef } from "react";
 import { AllGeners } from "../MovieCatalog/MovieCatalog";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { addFilmsGenre, getFilmsGenre, setFilmsGenre, setLoadingNewFilm } from "../../../Redux/filmCatalog-reducer";
+import { addFilmsGenre, setFilmsGenre, setLoadingNewFilm } from "../../../Redux/filmCatalog-reducer";
 import Loader from "../../Elements/Loader/Loader";
 import Movie from "../FilmProfile/MoviesYouLike/Movie/Movie";
 import { useObserver } from "../../../hooks/useObserver";
@@ -39,7 +39,7 @@ useEffect(() => {
   dispatch(setLoadingNewFilm(false));
 }, [genre]);
 
-  useObserver(lastElement,loading,loadingNewFilm, ()=>{dispatch(addFilmsGenre([filmsGenres], 12, filmCountScip))})
+ useObserver(lastElement,loading,loadingNewFilm, ()=>{dispatch(addFilmsGenre([filmsGenres], 12, filmCountScip))})
 
 
   //@ts-ignore
