@@ -24,7 +24,7 @@ export default class FilemService {
     return $api.get("/profileFilm/" + id);
   }
   static async updateFilm(formData: Object): Promise<any> {
-    return $api.put("/film", formData);
+    return $api.put("/updateFilm", formData);
   }
   static async updateRating(id:String,rating:number | undefined): Promise<AxiosResponse<number>> {
     return $api.put("/film/rating", {_id:id,rating});
