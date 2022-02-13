@@ -1,7 +1,6 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -27,9 +26,11 @@
     "express": "^4.17.2",
     "formik": "^2.2.9",
     "nuka-carousel": "^4.8.4",
-    "react": "^17.0.2",
+    "react": "^16.0.2",
     "react-dimmer": "^1.0.7",
     "react-dom": "^17.0.2",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.2.2",
     "react-player": "^2.9.0",
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.22",
@@ -73,6 +74,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.1",
+    "@types/react-facebook-login": "^4.1.4",
     "@types/react-slick": "^0.23.8",
     "@types/webpack-env": "^1.16.3",
     "typings-for-css-modules-loader": "^1.7.0"

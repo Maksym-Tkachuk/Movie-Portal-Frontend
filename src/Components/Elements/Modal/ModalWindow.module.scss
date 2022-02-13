@@ -55,7 +55,7 @@
     display: block;
   }
   & > span {
-    @include styleText(24, 65);
+    @include styleText(24, 45);
     color: #707070;
     @media (max-width: 500px) {
       margin: 45%;
@@ -63,16 +63,19 @@
   }
 }
 .social_groups {
-  & a:not(:last-child) {
-    margin-right: 69px;
-    @media (max-width: 500px) {
-      width: 30px;
-      height: 30px;
-    }
+  width: 100%;
+  & button {
+    width: 100%;
   }
-  @media (max-width: 500px) {
-    margin-right: 0;
-    display: flex;
-    justify-content: space-evenly;
-  }
+}
+
+
+
+.fa-facebook-f:before, .fa-facebook:before {
+  content: "\f09a";
+  left: 0;
+  top: 50%;
+  font-size: 27px;
+  position: absolute;
+  transform: translate(13px, -50%);
 }
