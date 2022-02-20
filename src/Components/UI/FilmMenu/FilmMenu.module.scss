@@ -18,22 +18,13 @@
     display: flex;
     position: relative;
     justify-content: space-between;
+    align-items: center;
     @media (max-width: 750px) {
       justify-content: center;
       margin-bottom: 0px;
     }
-    &::after {
-      @include updateScreen;
-      content: "▼";
-      display: block;
-      position: absolute;
-      right: -20px;
-      top: 35%;
-      cursor: pointer;
-      transform: translate(0, -50%);
-    }
-    &:hover::after {
-      color: brown;
+    & .arrow{
+      @include styleText(19, 25);
     }
     &:hover .other_item {
       display: block !important;

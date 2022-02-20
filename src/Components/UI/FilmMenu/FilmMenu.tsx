@@ -6,7 +6,7 @@ import style from "./FilmMenu.module.scss"
 
 const FilmMenu:FC = ()=>{
     const navigation = useNavigate()
-    const [modalWindow, setModalWindow] = useState<boolean>(false)
+    const [modalWindow, setModalWindow] = useState<boolean>(true)
 
 let timer:any;
 
@@ -31,8 +31,7 @@ const otherGenreMenu = otherGenre.map((elem,index)=>{
     return <li key={index} 
     onClick={()=>{
     navigation(`main/${elem.type}`)
-    setModalWindow(true)
-    timer =  setTimeout(()=>setModalWindow(false),500) }
+    setModalWindow((pre)=>!pre) }
 }>{elem.title}</li>
 })
 
@@ -41,8 +40,9 @@ const otherGenreMenu = otherGenre.map((elem,index)=>{
         <nav className={style.menu}>
           <ul className={style.menu_items}>
               {menu}
-              <li className={style.genres}>ЖАНРЫ</li>
-            {modalWindow || <li className={style.other_item}> 
+              <li onClick={()=>setModalWindow((pre)=>!pre)} className={style.arrow}>▼</li>
+              <li   onClick={()=>setModalWindow((pre)=>!pre)} className={style.genres}>ЖАНРЫ</li>
+                      {modalWindow || <li className={style.other_item}> 
                   <ul >
                       {otherGenreMenu} 
                   </ul>

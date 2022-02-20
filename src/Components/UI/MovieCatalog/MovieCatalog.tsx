@@ -72,7 +72,6 @@ useEffect(() => {
       {isAuth || <EnterInformation />}
       <SearchForm />
       {filmSearch.length == 0 ? filmDepartments : <FilmSearch />}
-      {(loadingCatalogFilm || loading) &&  <Loader value={true} />}
       <div ref={lastElement} style={{ height: "5px" }}></div>
     </div>
   );

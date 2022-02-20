@@ -7,31 +7,39 @@ import Movie from "../../FilmProfile/MoviesYouLike/Movie/Movie";
 import { AllGeners } from "../MovieCatalog";
 import s from "./FilmSearch.module.scss";
 
-
-
-
 const FilmSearch: FC = () => {
+  const { filmSearch, loading } = useTypedSelector((state) => state.filmSearch);
+  const { loadingCatalogFilm } = useTypedSelector(
+    (state) => state.filmsCatalog
+  );
 
-const {filmSearch,loading} = useTypedSelector(state=>state.filmSearch)
-    let genreUrl = ""
+  let genreUrl = "";
 
-  
+  let images = filmSearch.map((elem: FilmResponce) => {
+    for (let gen in AllGeners) {
+      //@ts-ignore
+      if (AllGeners[gen] == elem.genre[1]) genreUrl = gen;
+    }
+    return (
+      <NavLink
+        className={s.film_picture}
+        to={"/main/" + genreUrl + "/" + elem._id}
+        key={elem._id}
+      >
+        <Movie
+          key={elem._id}
+          time={elem.time}
+          name={elem.name}
+          img={elem.picture}
+          year={elem.release}
+        />
+      </NavLink>
+    );
+  });
 
-    
-
-    let images = filmSearch.map((elem:FilmResponce) => {
-        for(let gen in AllGeners){
-            //@ts-ignore
-            if(AllGeners[gen] == elem.genre[1]) genreUrl=gen
-        }
-        return (
-          <NavLink className={s.film_picture}  to={"/main/" + genreUrl + "/" + elem._id}  key={elem._id} >
-           <Movie key={elem._id} time={elem.time}  name={elem.name}  img={elem.picture} year={elem.release} />
-          </NavLink>
-        );
-      });
-
-
+  if (loadingCatalogFilm || loading) {
+    return <Loader value={true} />;
+  }
   return (
     <section className={s.filmSearch}>
       <div className={s.listOfMovies}>{images}</div>
