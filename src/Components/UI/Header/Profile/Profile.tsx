@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { userAvatar } from "../../../../Redux/profile-reducer";
 import { AppStateType } from "../../../../Redux/store";
@@ -13,50 +12,44 @@ import { logout } from "../../../../Redux/auth-reducer";
 import Loader from "../../../Elements/Loader/Loader";
 import ProfileMenu from "./ProfileMenu";
 
-
 const Profile: FC = () => {
   const dispatch = useDispatch();
   const router = useNavigate();
-  const { admin, userName } = useSelector( (state: AppStateType) => state.auth.user);
-  const profile = useTypedSelector(state=>state.profile)
-  const { isLoading } = useTypedSelector((state) => state.auth);
+  const { admin, userName } = useSelector(
+    (state: AppStateType) => state.auth.user
+  );
+  const profile = useTypedSelector((state) => state.profile);
+  const { loading } = useTypedSelector((state) => state.profile);
 
   const fileUploadHandler = async (event: any) => {
-    dispatch(userAvatar(event.target.files[0]))
+    dispatch(userAvatar(event.target.files[0]));
   };
-
-  if(isLoading){
-   return  <Loader/>
-  }
 
   return (
     <div className={style.profile}>
       {admin && (
-        <div className="AddToPhotosIcon"><AddToPhotosIcon
-        className={style.iconUpdate}
-          onClick={() => router("/Changes-Films")}
-          style={{ marginRight: "20px", cursor: "pointer" }}
-        /></div>
+        <div className="AddToPhotosIcon">
+          <AddToPhotosIcon
+            className={style.iconUpdate}
+            onClick={() => router("/Changes-Films")}
+            style={{ marginRight: "20px", cursor: "pointer" }}
+          />
+        </div>
       )}
       <div className={style.profile__userName}>{userName}</div>
       <div className={style.profile__avatar}>
         <div className={style.avatar}>
-          <input
-            accept="image/*"
-            onChange={(e) => {
-              fileUploadHandler(e);
-            }}
-            className={style.download}
-            type="file"
-          /> 
-          <img
-            src={profile.userAvatar ? profile.userAvatar : avatar}
-            alt="avatar"
+          <input accept="image/*" onChange={(e) => {fileUploadHandler(e);}} className={style.download} type="file"
           />
+          {loading ? (
+            <Loader />
+          ) : (
+            <img src={profile.userAvatar ? profile.userAvatar : avatar}  alt="avatar" />
+          )}
           <ProfileMenu />
         </div>
       </div>
-      <div onClick={() =>dispatch(logout())} className={style.buttonProfile}>
+      <div onClick={() => dispatch(logout())} className={style.buttonProfile}>
         <ButtonSquare text="logout" />
       </div>
     </div>

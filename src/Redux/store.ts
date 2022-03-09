@@ -23,9 +23,11 @@ let store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-type rootReducersType = typeof rootReducers;
+// type rootReducersType = typeof rootReducers;
 
-export type AppStateType = ReturnType<rootReducersType>;
+export type AppStateType = ReturnType<typeof rootReducers>;
+
+
 //@ts-ignore
 window.store = store;
 

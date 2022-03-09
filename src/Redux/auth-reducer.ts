@@ -5,6 +5,7 @@ import { AuthResponse } from "../models/response/AuthResponse";
 import { IUser } from "../models/User";
 import AuthService from "../Service/AuthService";
 import { actionType, authActionType, SetErrorLogin, SetErrorRegistration, SetIsAuth, SetIsLoadingLogReag, SetLoading, SetUser } from "../types/auth";
+import { userAvatarActionType } from "../types/userAvatar";
 import { setAvatar } from "./profile-reducer";
 
 
@@ -78,7 +79,7 @@ export const setIsLoadingLogReag = (loading: boolean):SetIsLoadingLogReag => ({
 });
 
 export const login =
-  (email: string, password: string) => async (dispatch:Dispatch<authActionType>) => {
+  (email: string, password: string) => async (dispatch:Dispatch<authActionType | any>) => {
     dispatch(setIsLoadingLogReag(true));
     try {
       let response = await AuthService.login(email, password);
@@ -97,7 +98,7 @@ export const login =
 
 export const registration =
   (email: string, password: string, userName: string) =>
-  async (dispatch:Dispatch<authActionType>) => {
+  async (dispatch:Dispatch<authActionType |  userAvatarActionType >) => {
     dispatch(setIsLoadingLogReag(true));
     try {
       let response = await AuthService.registration(email, password, userName);
@@ -132,7 +133,7 @@ export const logout = () => async (dispatch:Dispatch<authActionType>) => {
   }
 };
 
-export const chekAuth = () => async (dispatch:Dispatch<authActionType>) => {
+export const chekAuth = () => async (dispatch:Dispatch<authActionType | userAvatarActionType>) => {
   dispatch(setLoading(true));
   try {
    

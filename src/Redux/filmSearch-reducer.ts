@@ -1,10 +1,11 @@
 import { Dispatch } from "redux";
 import FilemService from "../Service/FilmService";
-import img from "../img/K-Drama/18-again.jpg";
+
 import {
   actionType,
   filmSearchActionType,
   initialfilmSearchState,
+  SetError,
   SetFilmSearch,
   SetLoadingSearch,
 } from "../types/filmSearch";
@@ -13,7 +14,7 @@ import { FilmResponce } from "../models/response/FilmGenreResponce";
 let initialState: initialfilmSearchState = {
   filmSearch: [],
   loading: false,
-  message: "",
+  error: "",
 };
 
 const filmSearchReducer = (
@@ -31,6 +32,11 @@ const filmSearchReducer = (
         ...state,
         loading: action.payload,
       };
+      case actionType.SET_ERROR_SEARCH:
+        return {
+          ...state,
+          error: action.payload,
+        };
     default:
       return state;
   }
@@ -46,14 +52,25 @@ export const setLoading = (value: boolean): SetLoadingSearch => ({
   payload: value,
 });
 
-export const getFilmSearch =
-  (name: string) => async (dispatch: Dispatch<filmSearchActionType>) => {
+export const setError = (value: string): SetError => ({
+  type: actionType.SET_ERROR_SEARCH,
+  payload: value,
+});
+
+
+export const getFilmSearch =(name: string) => async (dispatch: Dispatch<filmSearchActionType>) => {
     try {
+ 
       dispatch(setLoading(true));
+      dispatch(setError(""))
       const response = await FilemService.getFilmSearch(name);
       dispatch(setFilmSearch(response.data));
+
+        if(response.data.length == 0){
+             dispatch(setError("Фильм не найден"))
+        }
+      
     } catch (e: any) {
-      console.log(e);
       console.log(e.response?.data?.message);
     } finally {
       dispatch(setLoading(false));

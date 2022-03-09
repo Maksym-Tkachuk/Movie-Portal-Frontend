@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { FilmResponce } from "../../../models/response/FilmGenreResponce";
 import { getFilms } from "../../../Redux/filmCatalog-reducer";
+import { setFilmSearch } from "../../../Redux/filmSearch-reducer";
 import Loader from "../../Elements/Loader/Loader";
 import SearchForm from "../../Elements/SearchForm/SearchForm";
 import EnterInformation from "./EnterInformation/EnterInformation";
@@ -15,7 +16,7 @@ const [checkMovies,setcheckMovies] = useState<Array<number>>([])
 
   const { isAuth } = useTypedSelector((state) => state.auth);
   const { films,loadingCatalogFilm } = useTypedSelector((state) => state.filmsCatalog);
-  const { filmSearch,loading } = useTypedSelector((state) => state.filmSearch);
+  const { filmSearch } = useTypedSelector((state) => state.filmSearch);
   const dispatch = useDispatch();
 
   const lastElement:any = useRef();
@@ -61,11 +62,18 @@ useEffect(() => {
     observer.current = new IntersectionObserver(cb);
     observer.current.observe(lastElement.current)
 }, [loadingCatalogFilm])
-  const filmDepartments = Movie.map((elem) =>{
+
+useEffect(() => {
+ dispatch(setFilmSearch([]))
+}, [])
+
+const filmDepartments = Movie.map((elem) =>{
         if(checkMovies.some((el)=>el == elem.id && elem.films.length >=7)){
           return (<FilmContent key={`${elem.id}`} title={elem.title}films={elem.films}type={elem.type} />)}
   }
   );
+
+  
 
   return (
     <div>
@@ -73,6 +81,7 @@ useEffect(() => {
       <SearchForm />
       {filmSearch.length == 0 ? filmDepartments : <FilmSearch />}
       <div ref={lastElement} style={{ height: "5px" }}></div>
+      {loadingCatalogFilm && <Loader value={true}/>}
     </div>
   );
 };

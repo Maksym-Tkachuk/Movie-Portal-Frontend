@@ -27,7 +27,7 @@ const FormUpdate: FC<FormUpdateType> = (props) => {
 console.log(film)
 
 
-  if (result && props.button == true) {
+  if (result && props.button === true) {
     const key = "updatable";
     message.success({content: "Фильм был успешно обновлен", key,duration: 3});
     dispatch(setResult(false));

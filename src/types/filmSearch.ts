@@ -3,13 +3,13 @@ import { FilmResponce } from "../models/response/FilmGenreResponce";
 export type initialfilmSearchState = {
   filmSearch: Array<FilmResponce>;
   loading: boolean;
-  message: string;
+  error: string;
 };
 
 export enum actionType {
   SET_FILM_SEARCH = "SET-FILM-SEARCH",
   SET_LOADING_SEARCH = "SET-LOADING-SEARCH",
-  SET_MESSAGE = "SET-MESSAGE",
+  SET_ERROR_SEARCH = "SET_ERROR_SEARCH",
 }
 
 export type SetFilmSearch =  {
@@ -21,11 +21,11 @@ export type SetLoadingSearch =  {
   payload: boolean;
 };
 
-export type SetMessage =  {
-  type:  actionType.SET_MESSAGE;
+export type SetError =  {
+  type:  actionType.SET_ERROR_SEARCH;
   payload: string;
 };
 
 
 
-export type filmSearchActionType = SetFilmSearch | SetLoadingSearch | SetMessage
+export type filmSearchActionType = SetFilmSearch | SetLoadingSearch | SetError
