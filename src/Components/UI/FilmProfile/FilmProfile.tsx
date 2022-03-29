@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import style from "./FilmProfile.module.scss";
 import { useNavigate, useParams } from "react-router";
 import { Breadcrumb } from "antd";
@@ -40,7 +40,7 @@ const FilmProfile: FC<FilmProfileType> = (props) => {
 
 
   if (loading) {
-    return <Loader />;
+    return <Loader value={true}  />;
   }
 
   return (

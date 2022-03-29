@@ -50,11 +50,18 @@ form {
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
   & button {
     color: #fff;
     border-color: #fff;
     transition: 0.5s;
     font-size: 20px;
+    @media (max-width: 700px) {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
     &:hover {
       transition: 0.5s;
       border-color: red;
@@ -80,5 +87,3 @@ form {
 .search {
   margin-bottom: 20px;
 }
-
-

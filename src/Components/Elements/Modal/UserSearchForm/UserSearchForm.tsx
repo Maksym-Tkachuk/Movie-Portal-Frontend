@@ -8,6 +8,7 @@ import ButtonCircleLogin from '../../Button/ButtonCircleLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStateType } from '../../../../Redux/store';
 import { login, registration } from '../../../../Redux/auth-reducer';
+import Loader from '../../Loader/Loader';
 
 
 
@@ -133,7 +134,7 @@ const validate = (values:initialValuesType) => {
 
 
 if (auth.isLoadingLogReg) {
-  return (<div className={style.CircularProgress}><CircularProgress color="secondary" /></div>)
+  return <Loader value={true}/>
 }
 
 
