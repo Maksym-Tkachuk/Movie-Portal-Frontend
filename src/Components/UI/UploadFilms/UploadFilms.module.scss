@@ -87,3 +87,14 @@ form {
 .search {
   margin-bottom: 20px;
 }
+
+@media (max-width: 500px) {
+  .controlPanel {
+    flex-direction: column;
+    width: 100%;
+    & > .button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
